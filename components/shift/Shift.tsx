@@ -4,6 +4,7 @@ import { Container } from "@/components/primitives/Grid/Grid";
 import { Eyebrow } from "@/components/primitives/Eyebrow/Eyebrow";
 import { Heading } from "@/components/primitives/Heading/Heading";
 import { Body } from "@/components/primitives/Body/Body";
+import { ShiftMotion } from "./ShiftMotion";
 import styles from "./Shift.module.css";
 
 const { shift } = home;
@@ -11,42 +12,49 @@ const { shift } = home;
 export function Shift() {
   return (
     <Section id="shift" className={styles.shift} spacing="large">
-      {/* Subtle background architecture to represent structure */}
-      <div className={styles.architecture} aria-hidden="true">
-        <div className={styles.archLineV} style={{ left: "20%" }} />
-        <div className={styles.archLineV} style={{ left: "50%" }} />
-        <div className={styles.archLineV} style={{ left: "80%" }} />
-        <div className={styles.archLineH} style={{ top: "33%" }} />
-        <div className={styles.archLineH} style={{ top: "66%" }} />
-      </div>
-
       <Container>
-        <div className={styles.header}>
-          <Eyebrow className={styles.eyebrow}>
-            <span className={styles.eyebrowDot} aria-hidden="true" />
-            {shift.eyebrow}
-          </Eyebrow>
+        {/*
+          ShiftMotion wraps the entire visible content block including the
+          arch lines, so GSAP context can reach .js-arch-line-* selectors.
+          The arch lines are absolutely positioned to the Section via CSS.
+        */}
+        <ShiftMotion>
+          {/* Background architecture lines — positioned absolute to .shift section via CSS */}
+          <div className={styles.architecture} aria-hidden="true">
+            <div className={`${styles.archLineV} js-arch-line-v`} style={{ left: "20%" }} />
+            <div className={`${styles.archLineV} js-arch-line-v`} style={{ left: "50%" }} />
+            <div className={`${styles.archLineV} js-arch-line-v`} style={{ left: "80%" }} />
+            <div className={`${styles.archLineH} js-arch-line-h`} style={{ top: "33%" }} />
+            <div className={`${styles.archLineH} js-arch-line-h`} style={{ top: "66%" }} />
+          </div>
 
-          <Heading variant="h2" className={styles.headline}>
-            {shift.headline}
-          </Heading>
+          <div className={`${styles.header} js-shift-header`}>
+            <Eyebrow className={styles.eyebrow}>
+              <span className={styles.eyebrowDot} aria-hidden="true" />
+              {shift.eyebrow}
+            </Eyebrow>
 
-          <Body variant="large" className={styles.supportingCopy}>
-            {shift.supportingCopy}
-          </Body>
-        </div>
+            <Heading variant="h2" className={styles.headline}>
+              {shift.headline}
+            </Heading>
 
-        <div className={styles.transformList}>
-          {shift.transitions.map((item, index) => (
-            <div key={index} className={styles.transformItem}>
-              <span className={styles.transformFrom}>{item.from}</span>
-              <div className={styles.transformArrow} aria-hidden="true">
-                →
+            <Body variant="large" className={styles.supportingCopy}>
+              {shift.supportingCopy}
+            </Body>
+          </div>
+
+          <div className={styles.transformList}>
+            {shift.transitions.map((item, index) => (
+              <div key={index} className={`${styles.transformItem} js-transform-item`}>
+                <span className={`${styles.transformFrom} js-transform-from`}>{item.from}</span>
+                <div className={`${styles.transformArrow} js-transform-arrow`} aria-hidden="true">
+                  →
+                </div>
+                <span className={`${styles.transformTo} js-transform-to`}>{item.to}</span>
               </div>
-              <span className={styles.transformTo}>{item.to}</span>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </ShiftMotion>
       </Container>
     </Section>
   );

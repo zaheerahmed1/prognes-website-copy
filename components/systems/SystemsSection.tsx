@@ -5,50 +5,54 @@ import { Eyebrow } from "@/components/primitives/Eyebrow/Eyebrow";
 import { Heading } from "@/components/primitives/Heading/Heading";
 import { SystemArchitecture } from "./SystemArchitecture";
 import { SystemModule } from "./SystemModule";
+import { SystemsMotion } from "./SystemsMotion";
 import styles from "./SystemsSection.module.css";
 
 export function SystemsSection() {
   return (
     <Section id="systems" className={styles.systems} spacing="large">
       <Container className={styles.content}>
-        <div className={styles.intro}>
-          <Eyebrow className={styles.eyebrow}>
-            <span className={styles.eyebrowDot} aria-hidden="true" />
-            AI Systems
-          </Eyebrow>
+        <SystemsMotion>
+          <div className={`${styles.intro} js-systems-intro`}>
+            <Eyebrow className={styles.eyebrow}>
+              <span className={styles.eyebrowDot} aria-hidden="true" />
+              AI Systems
+            </Eyebrow>
 
-          <Heading variant="h2" className={styles.headline}>
-            Transform fragmented operations into connected intelligent systems.
-          </Heading>
+            <Heading variant="h2" className={styles.headline}>
+              Transform fragmented operations into connected intelligent systems.
+            </Heading>
 
-          <div className={styles.narrativeSeq}>
-            {systemsPage.narrative?.map((step, idx, arr) => (
-              <span key={idx} style={{ display: "contents" }}>
-                <span className={styles.narrativeStep}>{step}</span>
-                {idx < arr.length - 1 && (
-                  <span className={styles.arrow} aria-hidden="true">↓</span>
-                )}
-              </span>
-            ))}
-          </div>
-        </div>
-
-        <div className={styles.systemsGrid}>
-          <div className={styles.modules}>
-            {systemsPage.modules.map((mod) => (
-              <SystemModule
-                key={mod.id}
-                number={mod.number}
-                title={mod.title}
-                items={mod.items}
-              />
-            ))}
+            <div className={styles.narrativeSeq}>
+              {systemsPage.narrative?.map((step, idx, arr) => (
+                <span key={idx} style={{ display: "contents" }}>
+                  <span className={styles.narrativeStep}>{step}</span>
+                  {idx < arr.length - 1 && (
+                    <span className={styles.arrow} aria-hidden="true">↓</span>
+                  )}
+                </span>
+              ))}
+            </div>
           </div>
 
-          <div className={styles.architectureWrapper}>
-            <SystemArchitecture />
+          <div className={styles.systemsGrid}>
+            <div className={`${styles.modules} js-systems-modules`}>
+              {systemsPage.modules.map((mod) => (
+                <SystemModule
+                  key={mod.id}
+                  number={mod.number}
+                  title={mod.title}
+                  items={mod.items}
+                  className="js-system-module"
+                />
+              ))}
+            </div>
+
+            <div className={`${styles.architectureWrapper} js-systems-architecture`}>
+              <SystemArchitecture />
+            </div>
           </div>
-        </div>
+        </SystemsMotion>
       </Container>
     </Section>
   );

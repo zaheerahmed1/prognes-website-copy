@@ -127,6 +127,16 @@
     grid-template-columns: 320px 1fr;
     gap: var(--space-xl);
     align-items: flex-start;
+    /* Capability transition — content fades on change */
+    transition:
+      opacity var(--duration-micro) var(--ease-standard),
+      transform var(--duration-micro) var(--ease-standard);
+  }
+
+  /* Exit state — brief opacity dip as content swaps */
+  .tabPanel[data-transitioning="true"] {
+    opacity: 0;
+    transform: translateY(6px);
   }
   
   .tabDesc {

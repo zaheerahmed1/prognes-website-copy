@@ -100,3 +100,23 @@ p {
     scroll-behavior: auto !important;
   }
 }
+
+/* ─────────────────────────────────────────────────
+   LEVEL 2 SCROLL REVEAL — CSS utility
+   Used by SectionReveal client component.
+   Reduced-motion: the transition-duration rule above
+   collapses the animation to 0.01ms (effectively instant).
+   ───────────────────────────────────────────────── */
+.section-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.section-reveal[data-revealed="true"] {
+  opacity: 1;
+  transform: translateY(0);
+}
+

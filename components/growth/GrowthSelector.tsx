@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { growthPage } from "@/content/growth";
+import { allowsMotion } from "@/lib/motion";
 import sectionStyles from "./GrowthSection.module.css";
 import styles from "./GrowthSelector.module.css";
 
@@ -9,7 +10,6 @@ type Capability = typeof growthPage.selector[number];
 
 /**
  * Visual media placeholder representing the specific capability.
- * Instead of WebGL, it uses structural CSS representing AI systems.
  */
 function GrowthMedia({ item }: { item: Capability }) {
   return (
@@ -24,10 +24,54 @@ function GrowthMedia({ item }: { item: Capability }) {
   );
 }
 
+/**
+ * GrowthSelector — interactive capability selector with controlled transitions.
+ *
+ * MOTION:
+ *   When the active tab changes, the panel content (description + media)
+ *   animates with a brief opacity + slight vertical transition.
+ *   This is pure CSS — driven by the data-transitioning attribute.
+ *   GSAP is NOT needed for this micro-interaction; CSS is sufficient and
+ *   compositable without layout shift.
+ *
+ *   Reduced motion: the transition-duration is already suppressed by
+ *   globals.css prefers-reduced-motion rule, so the panel simply snaps.
+ */
 export function GrowthSelector() {
   const [activeId, setActiveId] = useState<string>(growthPage.selector[0].id);
+  const [transitioning, setTransitioning] = useState(false);
+  const pendingIdRef = useRef<string | null>(null);
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const activeItem = growthPage.selector.find((i) => i.id === activeId) || growthPage.selector[0];
+  const activeItem =
+    growthPage.selector.find((i) => i.id === activeId) || growthPage.selector[0];
+
+  const handleSelect = useCallback((id: string) => {
+    if (id === activeId) return;
+
+    if (!allowsMotion()) {
+      setActiveId(id);
+      return;
+    }
+
+    // Start exit transition, then swap content
+    pendingIdRef.current = id;
+    setTransitioning(true);
+
+    timerRef.current = setTimeout(() => {
+      if (pendingIdRef.current) {
+        setActiveId(pendingIdRef.current);
+        pendingIdRef.current = null;
+      }
+      setTransitioning(false);
+    }, 200); // matches CSS transition duration
+  }, [activeId]);
+
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, []);
 
   return (
     <>
@@ -43,7 +87,7 @@ export function GrowthSelector() {
                 role="tab"
                 aria-selected={isActive}
                 aria-expanded={isActive}
-                onClick={() => setActiveId(item.id)}
+                onClick={() => handleSelect(item.id)}
               >
                 <span>{item.label}</span>
                 <span className={styles.iconPlus} aria-hidden="true">+</span>
@@ -77,7 +121,7 @@ export function GrowthSelector() {
                 role="tab"
                 aria-selected={isActive}
                 className={styles.tabButton}
-                onClick={() => setActiveId(item.id)}
+                onClick={() => handleSelect(item.id)}
               >
                 {item.label}
               </button>
@@ -85,7 +129,11 @@ export function GrowthSelector() {
           })}
         </div>
 
-        <div className={styles.tabPanel} role="tabpanel">
+        <div
+          className={styles.tabPanel}
+          role="tabpanel"
+          data-transitioning={transitioning}
+        >
           <p className={styles.tabDesc}>{activeItem.desc}</p>
           <GrowthMedia item={activeItem} />
         </div>

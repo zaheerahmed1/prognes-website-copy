@@ -146,3 +146,31 @@
     aspect-ratio: 16 / 9;
   }
 }
+
+/* ════════════════════════════════════════════════
+   SCROLL REVEAL (Level 2 — CSS driven)
+   ════════════════════════════════════════════════ */
+
+/* Initial hidden state for the reveal wrapper */
+:global(.js-growth-reveal) {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity var(--duration-standard) var(--ease-standard),
+    transform var(--duration-standard) var(--ease-standard);
+}
+
+/* Revealed state — set by useScrollReveal hook */
+:global(.js-growth-reveal[data-revealed="true"]) {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :global(.js-growth-reveal) {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
