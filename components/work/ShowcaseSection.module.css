@@ -1,0 +1,103 @@
+.section {
+  position: relative;
+  background-color: var(--color-bg);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.intro {
+  margin-bottom: var(--space-xl);
+  max-width: 680px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-text-muted);
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.headline {
+  margin-block-start: var(--space-md);
+}
+
+.showcaseGrid {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+/* Empty State / Framework */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  margin-top: var(--space-xl);
+}
+
+.emptyMediaFrame {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.emptyLabel {
+  font-family: var(--font-body);
+  font-size: var(--text-label-size);
+  color: var(--color-text-muted);
+  letter-spacing: var(--text-label-tracking);
+}
+
+.emptyDetails {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.emptyTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-h3-size);
+  color: var(--color-text-primary);
+  letter-spacing: var(--text-h3-tracking);
+}
+
+.emptyDesc {
+  font-family: var(--font-body);
+  font-size: var(--text-body-size);
+  color: var(--color-text-secondary);
+  max-width: 480px;
+  line-height: var(--text-body-leading);
+}
+
+/* ════════════════════════════════════════════════
+   DESKTOP
+   ════════════════════════════════════════════════ */
+@media (min-width: 768px) {
+  .emptyState {
+    flex-direction: row;
+    gap: calc(var(--space-xl) * 2);
+    align-items: flex-start;
+  }
+
+  .emptyMediaFrame {
+    flex: 2;
+    aspect-ratio: 16/10; /* more editorial proportion */
+  }
+
+  .emptyDetails {
+    flex: 1;
+    padding-top: var(--space-md);
+  }
+}

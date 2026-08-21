@@ -1,0 +1,15 @@
+.section {
+  padding-block: var(--space-section);
+}
+
+.large {
+  padding-block: var(--space-section-large);
+}
+
+.hero {
+  padding-block: var(--space-section-hero);
+}
+
+.flush {
+  padding-block: 0;
+}

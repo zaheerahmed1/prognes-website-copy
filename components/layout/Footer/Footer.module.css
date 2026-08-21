@@ -1,0 +1,111 @@
+.footer {
+  border-top: var(--border-width) solid var(--color-border);
+  padding-block: var(--space-xl);
+  background-color: var(--color-bg);
+}
+
+.inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.topRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  align-items: flex-start;
+}
+
+.bottomRow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  align-items: flex-start;
+  padding-top: var(--space-xl);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-size: var(--text-h3-size);
+  font-weight: var(--font-weight-heading);
+  letter-spacing: -0.03em;
+  text-decoration: none;
+  color: var(--color-text-primary);
+  max-width: 16rem;
+  line-height: var(--text-h3-leading);
+}
+
+.primaryCta, .primaryCtaDisabled {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-sm);
+  color: var(--color-accent);
+  font-family: var(--font-body);
+  font-size: var(--text-body-size);
+  font-weight: var(--font-weight-button);
+  text-decoration: none;
+  transition: opacity 0.25s ease;
+}
+
+.primaryCta:hover {
+  opacity: 0.8;
+}
+
+.primaryCtaDisabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm) var(--space-md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-min);
+  font-size: var(--text-small-size);
+  font-weight: var(--font-weight-label);
+  letter-spacing: var(--text-label-tracking);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text-secondary);
+}
+
+.link:hover {
+  color: var(--color-text-primary);
+}
+
+.missingContentSlots {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.slot {
+  font-family: var(--font-body);
+  font-size: var(--text-small-size);
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+@media (min-width: 768px) {
+  .topRow, .bottomRow {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .missingContentSlots {
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-lg);
+  }
+}

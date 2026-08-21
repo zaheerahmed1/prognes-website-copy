@@ -1,0 +1,125 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--nav-height);
+  border-bottom: var(--border-width) solid var(--color-border);
+  background-color: var(--color-bg);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  height: var(--nav-height);
+}
+
+.logo {
+  font-family: var(--font-display);
+  font-size: var(--text-small-size);
+  font-weight: var(--font-weight-heading);
+  line-height: 1.2;
+  letter-spacing: -0.03em;
+  color: var(--color-text-primary);
+  text-decoration: none;
+  max-width: 11.5rem;
+}
+
+.desktopNav {
+  display: none;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.list {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.itemLink {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--target-min);
+  font-size: var(--text-small-size);
+  font-weight: var(--font-weight-label);
+  letter-spacing: var(--text-label-tracking);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--color-text-secondary);
+}
+
+.itemLink:hover,
+.itemLink[aria-current="page"] {
+  color: var(--color-text-primary);
+}
+
+.menuButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: var(--target-min);
+  min-height: var(--target-min);
+  margin: 0;
+  padding: 0 var(--space-xs);
+  border: 0;
+  background: transparent;
+  color: var(--color-text-primary);
+  font-size: var(--text-label-size);
+  font-weight: var(--font-weight-label);
+  letter-spacing: var(--text-label-tracking);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.panel {
+  position: absolute;
+  inset: var(--nav-height) 0 auto;
+  z-index: 99;
+  padding: var(--space-md) var(--space-container) var(--space-lg);
+  background: var(--color-surface);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.panelList {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.panelLink {
+  display: flex;
+  align-items: center;
+  min-height: var(--target-min);
+  font-family: var(--font-display);
+  font-size: var(--text-h3-size);
+  font-weight: var(--font-weight-heading);
+  letter-spacing: var(--text-h3-tracking);
+  text-decoration: none;
+  color: var(--color-text-primary);
+}
+
+.panelCta {
+  margin-top: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .logo {
+    max-width: none;
+  }
+
+  .desktopNav {
+    display: flex;
+  }
+
+  .menuButton,
+  .panel {
+    display: none;
+  }
+}

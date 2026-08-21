@@ -1,0 +1,148 @@
+.growth {
+  position: relative;
+  background-color: var(--color-bg);
+  border-top: var(--border-width) solid var(--color-border);
+  overflow: hidden;
+}
+
+.intro {
+  margin-bottom: var(--space-xl);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-text-muted);
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.headline {
+  margin-block-start: var(--space-md);
+  max-width: 16ch;
+}
+
+/* ─── Transformation Sequence ─── */
+.transformSeq {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-block-start: var(--space-lg);
+}
+
+.transformStep {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  font-family: var(--font-body);
+  font-size: var(--text-small-size);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--text-label-tracking);
+  line-height: var(--text-small-leading);
+}
+
+.transformStep:last-child {
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-label);
+}
+
+.arrow {
+  color: var(--color-text-muted);
+}
+
+/* ─── Selector Layout ─── */
+.layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* ─── Media Placeholder ─── */
+.mediaWrap {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  width: 100%;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mediaLines {
+  position: absolute;
+  inset: 0;
+  opacity: 0.1;
+  background-image: 
+    linear-gradient(to right, var(--color-text-primary) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--color-text-primary) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.mediaCenter {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.mediaIcon {
+  width: 48px;
+  height: 48px;
+  border: var(--border-width) solid var(--color-accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  opacity: 0.5;
+}
+
+.mediaLabel {
+  font-family: var(--font-display);
+  font-size: var(--text-h3-size);
+  color: var(--color-text-primary);
+  opacity: 0.8;
+}
+
+/* ════════════════════════════════════════════════
+   TABLET  (768 px+)
+   ════════════════════════════════════════════════ */
+@media (min-width: 768px) {
+  .transformSeq {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* ════════════════════════════════════════════════
+   DESKTOP  (1200 px+)
+   ════════════════════════════════════════════════ */
+@media (min-width: 1200px) {
+  .intro {
+    margin-bottom: calc(var(--space-xl) * 1.5);
+  }
+
+  .layout {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  .mediaWrap {
+    aspect-ratio: 16 / 9;
+  }
+}

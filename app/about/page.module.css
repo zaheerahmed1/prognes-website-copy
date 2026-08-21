@@ -1,0 +1,50 @@
+.aboutSection {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+}
+
+.intro {
+  max-width: 680px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-text-muted);
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.headline {
+  margin-block-start: var(--space-md);
+}
+
+.emptyState {
+  margin-block-start: var(--space-xl);
+  padding: var(--space-lg);
+  border: var(--border-width) dashed var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+}
+
+.emptyTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-h3-size);
+  color: var(--color-text-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.emptyDesc {
+  font-family: var(--font-body);
+  font-size: var(--text-body-size);
+  color: var(--color-text-secondary);
+  line-height: var(--text-body-leading);
+}

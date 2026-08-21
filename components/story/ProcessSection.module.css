@@ -1,0 +1,133 @@
+.section {
+  position: relative;
+  background-color: var(--color-bg);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.intro {
+  margin-bottom: var(--space-xl);
+  max-width: 680px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-text-muted);
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.headline {
+  margin-block-start: var(--space-md);
+}
+
+.processFlow {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  position: relative;
+  margin-top: var(--space-xl);
+}
+
+/* Connecting line on mobile */
+.processFlow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 24px; /* roughly centers behind the index circle if we design it that way */
+  width: var(--border-width);
+  background-color: var(--color-border);
+  z-index: 0;
+}
+
+.stage {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  padding-left: calc(48px + var(--space-md)); /* Space for the index circle */
+}
+
+.stageHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.stageIndex {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: 50%;
+  font-family: var(--font-body);
+  font-size: var(--text-small-size);
+  color: var(--color-accent);
+}
+
+.stageLabel {
+  font-family: var(--font-display);
+  font-size: var(--text-h3-size);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-heading);
+  letter-spacing: var(--text-h3-tracking);
+  margin: 0;
+  padding-top: 12px; /* aligns visually with circle center */
+}
+
+.stageDesc {
+  font-family: var(--font-body);
+  font-size: var(--text-body-size);
+  color: var(--color-text-secondary);
+  line-height: var(--text-body-leading);
+  max-width: 400px;
+}
+
+/* ════════════════════════════════════════════════
+   DESKTOP
+   ════════════════════════════════════════════════ */
+@media (min-width: 768px) {
+  .processFlow {
+    flex-direction: row;
+    gap: var(--space-xl);
+  }
+
+  .processFlow::before {
+    top: 24px;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    width: 100%;
+    height: var(--border-width);
+  }
+
+  .stage {
+    flex: 1;
+    padding-left: 0;
+    padding-top: calc(48px + var(--space-md));
+  }
+
+  .stageIndex {
+    left: 0;
+    top: 0;
+  }
+
+  .stageLabel {
+    padding-top: 0;
+  }
+}

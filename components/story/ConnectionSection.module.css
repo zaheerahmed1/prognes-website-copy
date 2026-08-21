@@ -1,0 +1,43 @@
+.connection {
+  position: relative;
+  background-color: var(--color-bg);
+  overflow: hidden;
+}
+
+.intro {
+  margin-bottom: var(--space-xl);
+  max-width: 680px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-text-muted);
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.headline {
+  margin-block-start: var(--space-md);
+}
+
+.supportingCopy {
+  margin-block-start: var(--space-lg);
+  font-family: var(--font-body);
+  font-size: var(--text-large-body-size);
+  color: var(--color-text-secondary);
+  line-height: var(--text-large-body-leading);
+}
+
+@media (min-width: 768px) {
+  .intro {
+    margin-bottom: calc(var(--space-xl) * 2);
+  }
+}
