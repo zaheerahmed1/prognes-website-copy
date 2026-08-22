@@ -37,8 +37,9 @@ export default function RootLayout({
     <html
       lang={site.lang}
       className={`${spaceGrotesk.variable} ${inter.variable}`}
+      suppressHydrationWarning
     >
-      <body>
+      <body suppressHydrationWarning>
         <a className="skipLink" href="#main">
           Skip to content
         </a>
