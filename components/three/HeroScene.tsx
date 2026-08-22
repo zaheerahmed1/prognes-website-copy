@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useEffect } from "react";
 import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
@@ -42,6 +42,13 @@ function WireframeEdges({
   const edges = useMemo(() => new THREE.EdgesGeometry(geometry, 15), [geometry]);
   const mat = useMemo(() => createLineMaterial(color, opacity), [color, opacity]);
 
+  useEffect(() => {
+    return () => {
+      edges.dispose();
+      mat.dispose();
+    };
+  }, [edges, mat]);
+
   return <lineSegments geometry={edges} material={mat} />;
 }
 
@@ -72,6 +79,17 @@ function WireRing({
     return line;
   }, [radius, opacity, rotationX]);
 
+  useEffect(() => {
+    return () => {
+      lineObj.geometry.dispose();
+      if (Array.isArray(lineObj.material)) {
+        lineObj.material.forEach(m => m.dispose());
+      } else {
+        lineObj.material.dispose();
+      }
+    };
+  }, [lineObj]);
+
   return <primitive object={lineObj} />;
 }
 
@@ -88,6 +106,13 @@ function NodeDot({ position }: { position: [number, number, number] }) {
     [],
   );
   const geo = useMemo(() => new THREE.SphereGeometry(0.03, 8, 8), []);
+
+  useEffect(() => {
+    return () => {
+      mat.dispose();
+      geo.dispose();
+    };
+  }, [mat, geo]);
 
   return <mesh geometry={geo} material={mat} position={position} />;
 }
@@ -136,6 +161,16 @@ export function HeroScene() {
     // Take a subset of unique positions for accent dots (max 6)
     return Array.from(unique.values()).slice(0, 6);
   }, [icosaGeo]);
+
+  useEffect(() => {
+    return () => {
+      icosaGeo.dispose();
+      octaGeo.dispose();
+      innerOctaGeo.dispose();
+      coreGeo.dispose();
+      coreMat.dispose();
+    };
+  }, [icosaGeo, octaGeo, innerOctaGeo, coreGeo, coreMat]);
 
   /* Slow rotation + pointer interaction — alive, not busy */
   useFrame((_, delta) => {
