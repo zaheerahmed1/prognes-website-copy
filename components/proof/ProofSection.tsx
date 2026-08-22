@@ -6,7 +6,7 @@ import { SectionReveal } from "@/components/motion/SectionReveal";
 import styles from "./ProofSection.module.css";
 
 // Proof data should come from verified content in a real scenario
-const proofItems: any[] = []; // Currently no verified proof data
+const proofItems: unknown[] = []; // Currently no verified proof data
 
 export function ProofSection() {
   const hasProof = proofItems && proofItems.length > 0;

@@ -41,7 +41,6 @@ const config: NarrativeConfig = {
         gsap.from(items, {
           opacity: 0,
           x: -16,
-          clipPath: "inset(0 100% 0 0)",
           duration: 0.55,
           ease: "power2.out",
           stagger: 0.08,

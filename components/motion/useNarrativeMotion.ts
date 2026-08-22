@@ -49,11 +49,12 @@ export function useNarrativeMotion<T extends HTMLElement>(
     const el = containerRef.current;
     if (!el) return;
 
+    let isActive = true;
     let ctx: gsap.Context | null = null;
 
     loadGSAP().then(({ gsap, ScrollTrigger }) => {
-      // Re-check after async — user might have navigated away
-      if (!containerRef.current) return;
+      // Re-check after async — user might have navigated away or Strict Mode unmounted
+      if (!isActive || !containerRef.current) return;
 
       if (config.desktopOnly && window.innerWidth < 1024) return;
       if (config.tabletUp && window.innerWidth < 768) return;
@@ -62,6 +63,7 @@ export function useNarrativeMotion<T extends HTMLElement>(
     });
 
     return () => {
+      isActive = false;
       ctx?.kill();
     };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
