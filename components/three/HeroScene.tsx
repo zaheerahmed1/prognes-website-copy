@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useMemo } from "react";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useThree } from "@react-three/fiber";
 import * as THREE from "three";
 
 /**
@@ -95,11 +95,30 @@ function NodeDot({ position }: { position: [number, number, number] }) {
 export function HeroScene() {
   const groupRef = useRef<THREE.Group>(null!);
   const frameRef = useRef(0);
+  const { pointer } = useThree();
 
   /* Procedural geometries — created once */
   const icosaGeo = useMemo(() => new THREE.IcosahedronGeometry(1.2, 1), []);
   const octaGeo = useMemo(() => new THREE.OctahedronGeometry(1.8, 0), []);
   const innerOctaGeo = useMemo(() => new THREE.OctahedronGeometry(0.6, 0), []);
+
+  /* Physical core for premium feel */
+  const coreGeo = useMemo(() => new THREE.IcosahedronGeometry(0.5, 1), []);
+  const coreMat = useMemo(
+    () =>
+      new THREE.MeshPhysicalMaterial({
+        color: new THREE.Color("#000000"),
+        emissive: ACCENT,
+        emissiveIntensity: 0.05,
+        roughness: 0.2,
+        metalness: 0.8,
+        transmission: 0.9,
+        thickness: 0.5,
+        ior: 1.5,
+        transparent: true,
+      }),
+    []
+  );
 
   /* Node positions at icosahedron vertices */
   const nodePositions: [number, number, number][] = useMemo(() => {
@@ -118,12 +137,22 @@ export function HeroScene() {
     return Array.from(unique.values()).slice(0, 6);
   }, [icosaGeo]);
 
-  /* Slow rotation — alive, not busy */
+  /* Slow rotation + pointer interaction — alive, not busy */
   useFrame((_, delta) => {
     if (!groupRef.current) return;
     frameRef.current += delta;
-    groupRef.current.rotation.y = frameRef.current * 0.06;
-    groupRef.current.rotation.x = Math.sin(frameRef.current * 0.03) * 0.1;
+    
+    // Base procedural rotation
+    const baseRotX = Math.sin(frameRef.current * 0.03) * 0.1;
+    const baseRotY = frameRef.current * 0.06;
+    
+    // Subtle pointer influence (restrained)
+    const targetX = baseRotX - pointer.y * 0.15;
+    const targetY = baseRotY + pointer.x * 0.15;
+
+    // Smooth interpolation
+    groupRef.current.rotation.x = THREE.MathUtils.lerp(groupRef.current.rotation.x, targetX, 0.05);
+    groupRef.current.rotation.y = THREE.MathUtils.lerp(groupRef.current.rotation.y, targetY, 0.05);
   });
 
   return (
@@ -131,6 +160,8 @@ export function HeroScene() {
       {/* Soft ambient + directional for subtle depth */}
       <ambientLight intensity={0.3} />
       <directionalLight position={[5, 5, 5]} intensity={0.4} />
+      {/* Accent light for the physical material */}
+      <pointLight position={[-2, 2, 2]} color={ACCENT} intensity={0.5} distance={10} />
 
       <group ref={groupRef}>
         {/* Outer octahedron — infrastructure frame */}
@@ -141,6 +172,9 @@ export function HeroScene() {
 
         {/* Inner octahedron — core system */}
         <WireframeEdges geometry={innerOctaGeo} color={ACCENT} opacity={0.12} />
+
+        {/* Solid physical core */}
+        <mesh geometry={coreGeo} material={coreMat} />
 
         {/* Orbital rings — architectural precision */}
         <WireRing radius={1.5} opacity={0.06} />

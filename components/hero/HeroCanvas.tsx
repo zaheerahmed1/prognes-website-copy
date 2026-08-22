@@ -17,6 +17,7 @@ type Props = {
  */
 export function HeroCanvas({ onReady }: Props) {
   const [hasError, setHasError] = useState(false);
+  const [isInView, setIsInView] = useState(true);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const handleCreated = useCallback(() => {
@@ -40,6 +41,22 @@ export function HeroCanvas({ onReady }: Props) {
     };
   }, []);
 
+  /* Pause rendering when offscreen */
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsInView(entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   if (hasError) return null;
 
   return (
@@ -56,7 +73,7 @@ export function HeroCanvas({ onReady }: Props) {
         }}
         camera={{ position: [0, 0, 5], fov: 40 }}
         dpr={[1, 1.5]}
-        frameloop="always"
+        frameloop={isInView ? "always" : "demand"}
         style={{
           position: "absolute",
           inset: 0,
