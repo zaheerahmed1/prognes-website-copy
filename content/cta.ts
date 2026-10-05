@@ -1,7 +1,7 @@
 export const cta = {
   primary: {
     label: "Build your advantage",
-    href: null as string | null,
+    href: "/advantage",
   },
   secondary: [
     { label: "Explore our systems", href: "/systems" },

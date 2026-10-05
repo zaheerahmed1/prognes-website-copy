@@ -70,7 +70,10 @@ function HeaderBar({ pathname }: { pathname: string }) {
               </li>
             ))}
           </ul>
-          <PrimaryCta />
+          <div className={styles.ctaGroup}>
+            <SecondaryCta />
+            <PrimaryCta />
+          </div>
         </nav>
 
         <button
@@ -105,6 +108,7 @@ function HeaderBar({ pathname }: { pathname: string }) {
           ))}
         </ul>
         <div className={styles.panelCta}>
+          <SecondaryCta />
           <PrimaryCta />
         </div>
       </nav>
@@ -129,3 +133,19 @@ function PrimaryCta() {
     </Button>
   );
 }
+
+function SecondaryCta() {
+  const label = `${nav.secondaryCta.label} →`;
+
+  return (
+    <a
+      href={nav.secondaryCta.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={styles.secondaryCta}
+    >
+      {label}
+    </a>
+  );
+}
+

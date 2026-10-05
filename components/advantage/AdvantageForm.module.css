@@ -1,0 +1,328 @@
+/* ═══════════════════════════════════════════════
+   AdvantageForm — styles
+   Uses PROGNES design tokens throughout.
+   ═══════════════════════════════════════════════ */
+
+/* ── Shared wrapper ── */
+.formWrap,
+.successWrap {
+  max-width: 720px;
+  margin-inline: auto;
+}
+
+/* ── Form header ── */
+.formHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-block-end: var(--space-xl);
+}
+
+.formHeadline {
+  text-transform: uppercase;
+}
+
+.formSubheadline {
+  max-width: 600px;
+}
+
+/* ── Form grid ── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.fieldGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+/* ── Field ── */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-family: var(--font-body);
+  font-size: var(--text-label-size);
+  font-weight: var(--font-weight-label);
+  letter-spacing: var(--text-label-tracking);
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: var(--text-label-leading);
+  /* Reset fieldset / legend defaults */
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ── Input ── */
+.input {
+  height: var(--button-height);
+  padding: 0 var(--space-sm);
+  background-color: var(--color-surface-elevated);
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-size: var(--text-body-size);
+  font-weight: var(--font-weight-body);
+  line-height: var(--text-body-leading);
+  transition:
+    border-color var(--duration-micro) var(--ease-standard),
+    background-color var(--duration-micro) var(--ease-standard);
+}
+
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.input:focus {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+  border-color: var(--color-accent);
+  background-color: var(--color-bg);
+}
+
+.input:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.inputError {
+  border-color: #f87171;
+}
+
+/* ── Error message ── */
+.errorMsg {
+  font-family: var(--font-body);
+  font-size: var(--text-label-size);
+  color: #f87171;
+  line-height: var(--text-small-leading);
+  margin: 0;
+}
+
+/* ── Error banner ── */
+.errorBanner {
+  padding: var(--space-sm);
+  background-color: rgba(248, 113, 113, 0.1);
+  border: var(--border-width) solid rgba(248, 113, 113, 0.3);
+  border-radius: var(--radius-sm);
+  color: #f87171;
+  font-family: var(--font-body);
+  font-size: var(--text-small-size);
+  text-align: center;
+}
+
+/* ── Challenge selection ── */
+.challengeFieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.challengeGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xs);
+}
+
+.challengeOption {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm);
+  background-color: var(--color-surface-elevated);
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  min-height: var(--target-min);
+  transition:
+    border-color var(--duration-micro) var(--ease-standard),
+    background-color var(--duration-micro) var(--ease-standard);
+}
+
+.challengeOption:hover {
+  border-color: var(--color-accent);
+  background-color: var(--color-bg);
+}
+
+/* Hide native radio, use accent-color for a simple approach */
+.radioInput {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border: var(--border-width) solid var(--color-border-strong);
+  border-radius: 50%;
+  background-color: transparent;
+  flex-shrink: 0;
+  cursor: pointer;
+  position: relative;
+  transition: border-color var(--duration-micro) var(--ease-standard);
+}
+
+.radioInput:checked {
+  border-color: var(--color-accent);
+}
+
+.radioInput:checked::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background-color: var(--color-accent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.radioInput:focus-visible {
+  outline: var(--focus-ring);
+  outline-offset: var(--focus-offset);
+}
+
+.radioInput:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.challengeLabel {
+  font-family: var(--font-body);
+  font-size: var(--text-small-size);
+  font-weight: var(--font-weight-body);
+  color: #ffffff;
+  line-height: var(--text-small-leading);
+}
+
+/* ── Submit row ── */
+.submitRow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  padding-block-start: var(--space-xs);
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  height: var(--button-height);
+  padding: 0 var(--button-padding-x);
+  background-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+  font-family: var(--font-body);
+  font-size: var(--text-small-size);
+  font-weight: var(--font-weight-button);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border-radius: var(--radius-pill);
+  border: none;
+  cursor: pointer;
+  min-width: 200px;
+  line-height: 1;
+  transition:
+    opacity var(--duration-micro) var(--ease-standard),
+    transform var(--duration-micro) var(--ease-standard);
+}
+
+.primaryBtn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.primaryBtn:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.supportingText {
+  color: var(--color-text-muted);
+}
+
+/* ── Spinner ── */
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--color-accent-contrast);
+  border-top-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Success state ── */
+.successWrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-md);
+  padding-block: var(--space-xl);
+}
+
+.successIcon {
+  margin-block-end: var(--space-xs);
+}
+
+.successHeadline {
+  text-transform: uppercase;
+}
+
+.successCopy {
+  max-width: 500px;
+}
+
+/* ════════════════════════════════════════════════
+   TABLET  (768 px+)
+   ════════════════════════════════════════════════ */
+@media (min-width: 768px) {
+  .fieldGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .challengeGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ════════════════════════════════════════════════
+   DESKTOP (1200 px+)
+   ════════════════════════════════════════════════ */
+@media (min-width: 1200px) {
+  .challengeGrid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* ════════════════════════════════════════════════
+   REDUCED MOTION
+   ════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .primaryBtn,
+  .primaryBtn:hover:not(:disabled) {
+    transition: none;
+    transform: none;
+  }
+
+  .spinner {
+    animation: none;
+  }
+}

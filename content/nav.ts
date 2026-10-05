@@ -3,6 +3,8 @@
  * Homepage narrative copy is not in this repo yet — do not invent it.
  */
 
+import { CALENDLY_URL } from "@/lib/advantage";
+
 export const site = {
   /**
    * A legal company name is not specified. The wordmark uses the approved
@@ -18,6 +20,7 @@ export const routes = {
   growth: "/growth",
   work: "/work",
   about: "/about",
+  advantage: "/advantage",
 } as const;
 
 export const nav = {
@@ -31,14 +34,16 @@ export const nav = {
   closeLabel: "Close",
   primaryCta: {
     label: "Build your advantage",
-    /**
-     * Destination is not in the spec (no contact route).
-     * Rendered as a button until a URL is approved.
-     */
-    href: null as string | null,
+    href: routes.advantage,
+  },
+  secondaryCta: {
+    label: "Book a strategy call",
+    href: CALENDLY_URL,
+    external: true,
   },
 } as const;
 
 export const footer = {
   navLabel: "Footer",
 } as const;
+
