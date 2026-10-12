@@ -1,0 +1,230 @@
+/* ═══════════════════════════════════════════════
+   /advantage — page module styles
+   Matches PROGNES premium dark editorial language.
+   All tokens from tokens.css.
+   ═══════════════════════════════════════════════ */
+
+/* ── 1. HERO ── */
+.heroSection {
+  position: relative;
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.heroContent {
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-text-muted);
+  opacity: 0;
+  animation: fadeSlideUp var(--duration-signature) var(--ease-standard) forwards;
+  animation-delay: 100ms;
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.heroHeadline {
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fadeSlideUp var(--duration-signature) var(--ease-standard) forwards;
+  animation-delay: 200ms;
+}
+
+.heroSubtext {
+  max-width: 540px;
+  opacity: 0;
+  animation: fadeSlideUp var(--duration-signature) var(--ease-standard) forwards;
+  animation-delay: 400ms;
+}
+
+/* ── 2. WHAT WE LOOK FOR ── */
+.pillarsSection {
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.sectionEyebrow {
+  margin-block-end: var(--space-lg);
+  color: var(--color-text-muted);
+}
+
+.pillarsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+.pillarCard {
+  padding: var(--space-md);
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.pillarTitle {
+  /* Intentionally no overrides — uses h3 defaults */
+}
+
+.pillarDesc {
+  color: var(--color-text-secondary);
+}
+
+/* ── 3. WHAT YOU GET ── */
+.deliverableSection {
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.deliverableContent {
+  max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.deliverableHeadline {
+  /* Uses h2 defaults */
+}
+
+.deliverableCopy {
+  /* Uses large body defaults */
+}
+
+.differentiatorList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.differentiatorItem {
+  font-family: var(--font-body);
+  font-size: var(--text-body-large-size);
+  line-height: var(--text-body-large-leading);
+  color: var(--color-text-muted);
+  font-style: italic;
+  padding-inline-start: var(--space-sm);
+  border-inline-start: 2px solid var(--color-border);
+}
+
+.deliverableClosing {
+  margin-block-start: var(--space-xs);
+}
+
+/* ── 4. HOW IT WORKS ── */
+.processSection {
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.stepsGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  counter-reset: step;
+}
+
+.stepCard {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+}
+
+.stepNumber {
+  font-family: var(--font-display);
+  font-size: var(--text-h2-size);
+  font-weight: var(--font-weight-display);
+  line-height: var(--text-h2-leading);
+  letter-spacing: var(--text-h2-tracking);
+  color: var(--color-accent);
+  flex-shrink: 0;
+  min-width: 2ch;
+}
+
+.stepText {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.stepTitle {
+  text-transform: uppercase;
+}
+
+.stepDesc {
+  color: var(--color-text-secondary);
+}
+
+/* ── 5. FORM ── */
+.formSection {
+  border-top: var(--border-width) solid var(--color-border);
+  background-color: var(--color-surface);
+}
+
+/* ── Keyframe ── */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ════════════════════════════════════════════════
+   TABLET (768 px+)
+   ════════════════════════════════════════════════ */
+@media (min-width: 768px) {
+  .pillarsGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ════════════════════════════════════════════════
+   DESKTOP (1200 px+)
+   ════════════════════════════════════════════════ */
+@media (min-width: 1200px) {
+  .pillarsGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stepsGrid {
+    flex-direction: row;
+    gap: var(--space-xl);
+  }
+
+  .stepCard {
+    flex: 1;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+}
+
+/* ════════════════════════════════════════════════
+   REDUCED MOTION
+   ════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .eyebrow,
+  .heroHeadline,
+  .heroSubtext {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+}

@@ -1,0 +1,163 @@
+.fallback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
+/* ─── Architectural grid lines ─── */
+.grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.04;
+}
+
+.gridLine {
+  position: absolute;
+  background: var(--color-text-primary);
+}
+
+.gridLineV {
+  width: 1px;
+  top: 0;
+  bottom: 0;
+}
+
+.gridLineH {
+  height: 1px;
+  left: 0;
+  right: 0;
+}
+
+/* ─── Central geometric form ─── */
+.form {
+  position: relative;
+  width: clamp(240px, 40vw, 480px);
+  height: clamp(240px, 40vw, 480px);
+}
+
+/* Outer ring */
+.ring {
+  position: absolute;
+  inset: 0;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: ringPulse 6s var(--ease-standard) infinite;
+}
+
+.ringInner {
+  position: absolute;
+  inset: 15%;
+  border: 1px solid var(--color-border);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+/* Central diamond / square rotated */
+.diamond {
+  position: absolute;
+  inset: 25%;
+  border: 1px solid var(--color-border-strong);
+  transform: rotate(45deg);
+  opacity: 0.6;
+}
+
+.diamondInner {
+  position: absolute;
+  inset: 20%;
+  border: 1px solid var(--color-accent);
+  transform: rotate(0deg);
+  opacity: 0.15;
+}
+
+/* Node dots */
+.node {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  opacity: 0.4;
+}
+
+.nodeTop    { top: 0; left: 50%; transform: translateX(-50%); }
+.nodeRight  { top: 50%; right: 0; transform: translateY(-50%); }
+.nodeBottom { bottom: 0; left: 50%; transform: translateX(-50%); }
+.nodeLeft   { top: 50%; left: 0; transform: translateY(-50%); }
+
+/* Center accent */
+.center {
+  position: absolute;
+  inset: 42%;
+  background: var(--color-accent);
+  opacity: 0.08;
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+/* Subtle gradient overlay */
+.gradient {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 40%,
+    var(--color-bg) 80%
+  );
+}
+
+@keyframes ringPulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1.02);
+  }
+}
+
+/* ─── Concept badge ─── */
+.badge {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(8px);
+  white-space: nowrap;
+}
+
+.badgeLabel {
+  font-family: var(--font-body);
+  font-size: var(--text-label-size);
+  font-weight: var(--font-weight-label);
+  letter-spacing: var(--text-label-tracking);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  line-height: var(--text-label-leading);
+}
+
+.badgeDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--color-accent);
+  flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring {
+    animation: none;
+  }
+}

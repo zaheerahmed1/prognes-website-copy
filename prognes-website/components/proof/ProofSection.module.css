@@ -1,0 +1,111 @@
+.section {
+  position: relative;
+  background-color: var(--color-bg);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.intro {
+  margin-bottom: var(--space-xl);
+  max-width: 680px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-text-muted);
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.headline {
+  margin-block-start: var(--space-md);
+}
+
+.proofGrid {
+  display: grid;
+  gap: var(--space-xl);
+}
+
+/* Empty State / Framework */
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  margin-top: var(--space-xl);
+}
+
+.structuralFramework {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-xl);
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.emptyMetric {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding-bottom: var(--space-md);
+  border-bottom: var(--border-width) solid var(--color-border-strong);
+}
+
+.emptyMetric:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.emptyLabel {
+  font-family: var(--font-body);
+  font-size: var(--text-label-size);
+  color: var(--color-text-muted);
+  letter-spacing: var(--text-label-tracking);
+}
+
+.emptyValue {
+  font-family: var(--font-display);
+  font-size: var(--text-h2-size);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-heading);
+}
+
+.emptyDisclaimer {
+  font-family: var(--font-body);
+  font-size: var(--text-small-size);
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* ════════════════════════════════════════════════
+   DESKTOP
+   ════════════════════════════════════════════════ */
+@media (min-width: 768px) {
+  .structuralFramework {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: calc(var(--space-xl) * 1.5);
+  }
+
+  .emptyMetric {
+    flex: 1;
+    border-bottom: none;
+    border-right: var(--border-width) solid var(--color-border-strong);
+    padding-bottom: 0;
+    padding-right: var(--space-lg);
+  }
+
+  .emptyMetric:last-child {
+    border-right: none;
+    padding-right: 0;
+  }
+}

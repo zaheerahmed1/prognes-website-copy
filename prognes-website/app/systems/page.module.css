@@ -1,0 +1,26 @@
+.systemsIntro {
+  padding-bottom: 0;
+}
+
+.introContent {
+  max-width: 800px;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-text-muted);
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.headline {
+  margin-block-start: var(--space-md);
+}

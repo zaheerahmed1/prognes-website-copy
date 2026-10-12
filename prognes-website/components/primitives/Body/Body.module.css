@@ -1,0 +1,28 @@
+.body {
+  font-family: var(--font-body);
+  font-size: var(--text-body-size);
+  font-weight: var(--font-weight-body);
+  line-height: var(--text-body-leading);
+  color: var(--color-text-secondary);
+  max-width: var(--layout-reading);
+}
+
+.large {
+  font-size: var(--text-body-large-size);
+  line-height: var(--text-body-large-leading);
+}
+
+.small {
+  font-size: var(--text-small-size);
+  line-height: var(--text-small-leading);
+}
+
+.caption {
+  font-size: var(--text-small-size);
+  line-height: var(--text-small-leading);
+  color: var(--color-text-muted);
+}
+
+.primary {
+  color: var(--color-text-primary);
+}

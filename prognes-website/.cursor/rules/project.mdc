@@ -1,0 +1,141 @@
+---
+alwaysApply: true
+---
+---
+description: Core rules for the AI agency website
+alwaysApply: true
+---
+
+# AI Agency Website — Development Rules
+
+## SOURCE OF TRUTH
+
+The file:
+
+AI_AGENCY_WEBSITE_MASTER_SPEC.md
+
+is the primary source of truth for this project.
+
+Read it before making major implementation decisions.
+
+## BRAND
+
+Core brand idea:
+
+Unfair Operational Leverage.
+
+The agency has two integrated capabilities:
+
+1. AI Growth
+2. AI Systems
+
+## AI GROWTH
+
+Includes:
+
+- AI UGC
+- AI product photography
+- CGI product advertising
+- Creative production
+- Paid advertising
+- Performance marketing
+
+Never remove AI Growth or AI UGC.
+
+## AI SYSTEMS
+
+Includes:
+
+- AI automation
+- Agentic AI
+- AI employees
+- AI sales systems
+- Lead qualification
+- CRM automation
+- Customer support
+- AI chatbots
+- AI voice agents
+- Internal business automation
+- Workflow automation
+- RAG / knowledge systems
+
+Never invent new services without approval.
+
+## DESIGN
+
+The website must feel:
+
+- Editorial
+- Premium
+- Intelligent
+- Technological
+- Commercial
+- Restrained
+
+Avoid:
+
+- Generic SaaS design
+- Cyberpunk aesthetics
+- Neon AI clichés
+- Robot imagery
+- Generic gradient cards
+- Excessive particles
+- Excessive animation
+- Random 3D decoration
+
+## DO NOT CHANGE
+
+Do not redesign the brand.
+
+Do not change the approved homepage narrative.
+
+Do not silently change approved copy.
+
+Do not remove sections because they appear technically difficult.
+
+Do not remove AI Growth.
+
+Do not remove AI UGC.
+
+Do not change the agency architecture.
+
+If something is technically problematic, explain the problem before changing the design.
+
+## DEVELOPMENT
+
+Use reusable components.
+
+Keep the code maintainable.
+
+Optimize for production performance.
+
+Support:
+
+- Desktop
+- Tablet
+- Mobile
+- Reduced motion
+- Accessibility
+
+Do not sacrifice performance for visual effects.
+
+## WORKFLOW
+
+Before major implementation:
+
+1. Read the relevant specification.
+2. Explain the implementation approach.
+3. Implement.
+4. Test the result.
+5. Review changes against the specification.
+6. Report deviations.
+
+Do not build the entire website in one uncontrolled operation.
+
+## IMPORTANT
+
+When a decision is unclear, do not invent an answer.
+
+Ask for approval or clearly flag the decision.
+
+Technical implementation must serve the approved design rather than redefine it.

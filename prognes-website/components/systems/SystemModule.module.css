@@ -1,0 +1,77 @@
+.module {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-xl);
+  border: var(--border-width) solid var(--color-border);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-sm);
+  transition: border-color 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+  cursor: pointer;
+}
+
+.module:hover {
+  border-color: var(--color-border-strong);
+  background-color: var(--color-surface-elevated);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-lg);
+}
+
+.number {
+  font-family: var(--font-body);
+  font-size: var(--text-label-size);
+  color: var(--color-accent);
+  letter-spacing: var(--text-label-tracking);
+  line-height: var(--text-label-leading);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-h3-size);
+  font-weight: var(--font-weight-heading);
+  color: var(--color-text-primary);
+  line-height: var(--text-h3-leading);
+  letter-spacing: var(--text-h3-tracking);
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.listItem {
+  font-family: var(--font-body);
+  font-size: var(--text-body-size);
+  color: var(--color-text-secondary);
+  line-height: var(--text-body-leading);
+  transition: color 0.2s ease;
+}
+
+.module:hover .listItem {
+  color: var(--color-text-primary);
+}
+
+.icon {
+  position: absolute;
+  bottom: var(--space-xl);
+  right: var(--space-xl);
+  color: var(--color-text-muted);
+  font-size: var(--text-h3-size);
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+    color 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.module:hover .icon {
+  transform: translateX(4px);
+  color: var(--color-accent);
+}

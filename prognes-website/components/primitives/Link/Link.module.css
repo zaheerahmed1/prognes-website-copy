@@ -1,0 +1,20 @@
+.link {
+  color: var(--color-text-primary);
+  text-decoration: none;
+  text-underline-offset: 0.2em;
+  transition: opacity var(--duration-micro) var(--ease-standard);
+}
+
+.link:hover {
+  opacity: 0.72;
+}
+
+.muted {
+  color: var(--color-text-secondary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .link {
+    transition: none;
+  }
+}

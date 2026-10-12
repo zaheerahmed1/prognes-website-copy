@@ -1,0 +1,147 @@
+/* ─── Shared Base ─── */
+.desktopSelector,
+.mobileSelector {
+  display: none;
+}
+
+/* ════════════════════════════════════════════════
+   MOBILE (Accordion/Stacked)
+   ════════════════════════════════════════════════ */
+@media (max-width: 1023px) {
+  .mobileSelector {
+    display: flex;
+    flex-direction: column;
+    border-top: var(--border-width) solid var(--color-border);
+  }
+
+  .accordionItem {
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+
+  .accordionButton {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: var(--space-md);
+    background: none;
+    border: none;
+    color: var(--color-text-primary);
+    font-family: var(--font-display);
+    font-size: var(--text-h3-size);
+    font-weight: var(--font-weight-heading);
+    text-align: left;
+    cursor: pointer;
+    transition: color var(--duration-micro) var(--ease-standard);
+  }
+
+  .accordionButton:hover,
+  .accordionButton[aria-expanded="true"] {
+    color: var(--color-accent);
+  }
+
+  .iconPlus {
+    font-size: 24px;
+    font-weight: 300;
+    transition: transform var(--duration-standard) var(--ease-standard);
+  }
+
+  .accordionButton[aria-expanded="true"] .iconPlus {
+    transform: rotate(45deg);
+  }
+
+  /* Content area (copy + media) inside accordion */
+  .accordionContent {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows var(--duration-standard) var(--ease-standard);
+  }
+
+  .accordionContent[data-active="true"] {
+    grid-template-rows: 1fr;
+  }
+
+  .accordionContentInner {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .accordionContentInner > div:last-child {
+    margin-bottom: var(--space-md);
+  }
+  
+  .desc {
+    color: var(--color-text-secondary);
+    font-size: var(--text-body-size);
+    line-height: var(--text-body-leading);
+  }
+}
+
+/* ════════════════════════════════════════════════
+   DESKTOP (Horizontal Tabs)
+   ════════════════════════════════════════════════ */
+@media (min-width: 1024px) {
+  .desktopSelector {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xl);
+  }
+
+  /* Horizontal Tab Row */
+  .tabList {
+    display: flex;
+    gap: var(--space-md);
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+
+  .tabButton {
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding-block: var(--space-sm);
+    padding-inline: var(--space-xs);
+    margin-bottom: -1px;
+    color: var(--color-text-muted);
+    font-family: var(--font-display);
+    font-size: var(--text-body-large-size);
+    font-weight: var(--font-weight-heading);
+    cursor: pointer;
+    transition: all var(--duration-micro) var(--ease-standard);
+    white-space: nowrap;
+  }
+
+  .tabButton:hover {
+    color: var(--color-text-primary);
+  }
+
+  .tabButton[aria-selected="true"] {
+    color: var(--color-accent);
+    border-bottom-color: var(--color-accent);
+  }
+
+  /* Active Content Area */
+  .tabPanel {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: var(--space-xl);
+    align-items: flex-start;
+    /* Capability transition — content fades on change */
+    transition:
+      opacity var(--duration-micro) var(--ease-standard),
+      transform var(--duration-micro) var(--ease-standard);
+  }
+
+  /* Exit state — brief opacity dip as content swaps */
+  .tabPanel[data-transitioning="true"] {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  
+  .tabDesc {
+    color: var(--color-text-secondary);
+    font-size: var(--text-body-large-size);
+    line-height: var(--text-body-large-leading);
+  }
+}

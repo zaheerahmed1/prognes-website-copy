@@ -1,0 +1,162 @@
+.shift {
+  position: relative;
+  background-color: var(--color-bg);
+  border-top: var(--border-width) solid var(--color-border);
+  overflow: hidden;
+}
+
+/* Background architecture lines for Shift section */
+.architecture {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.archLineV {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--color-text-primary);
+}
+
+.archLineH {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--color-text-primary);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+  align-items: center;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-accent);
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.headline {
+  white-space: pre-line;
+}
+
+.supportingCopy {
+  max-width: 600px;
+  margin-inline: auto;
+  color: var(--color-text-secondary);
+}
+
+/* ─── Transformation List ─── */
+.transformList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+  position: relative;
+  z-index: 1;
+}
+
+.transformItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-lg);
+  border: var(--border-width) solid var(--color-border);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+}
+
+.transformFrom {
+  font-family: var(--font-body);
+  font-size: var(--text-small-size);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: var(--text-label-tracking);
+}
+
+.transformArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: var(--border-width) solid var(--color-border-strong);
+  color: var(--color-text-secondary);
+  font-size: 14px;
+}
+
+.transformTo {
+  font-family: var(--font-display);
+  font-size: var(--text-h3-size);
+  font-weight: var(--font-weight-heading);
+  color: var(--color-text-primary);
+  text-align: center;
+  line-height: var(--text-h3-leading);
+  letter-spacing: var(--text-h3-tracking);
+}
+
+/* ════════════════════════════════════════════════
+   TABLET  (768 px+)
+   ════════════════════════════════════════════════ */
+@media (min-width: 768px) {
+  .transformItem {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: var(--space-xl) 10vw;
+  }
+  
+  .transformFrom {
+    flex: 1;
+    text-align: right;
+  }
+  
+  .transformTo {
+    flex: 1;
+    text-align: left;
+  }
+}
+
+/* ════════════════════════════════════════════════
+   DESKTOP  (1200 px+)
+   ════════════════════════════════════════════════ */
+@media (min-width: 1200px) {
+  .header {
+    margin-bottom: var(--space-section);
+  }
+  
+  .transformItem {
+    padding: var(--space-xl) 8vw;
+    background-color: transparent;
+    border: none;
+    border-bottom: var(--border-width) solid var(--color-border);
+    border-radius: 0;
+  }
+
+  .transformItem:first-child {
+    border-top: var(--border-width) solid var(--color-border);
+  }
+  
+  .transformTo {
+    font-size: var(--text-h2-size);
+  }
+}

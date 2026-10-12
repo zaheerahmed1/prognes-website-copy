@@ -1,0 +1,204 @@
+.hero {
+  position: relative;
+  min-height: calc(100vh - var(--nav-height));
+  min-height: calc(100svh - var(--nav-height));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ─── Editorial grid layout ─── */
+.inner {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
+  column-gap: var(--grid-gap);
+  width: min(100%, var(--layout-max));
+  margin-inline: auto;
+  padding-inline: var(--space-container);
+  padding-block-start: var(--space-section-hero);
+  padding-block-end: var(--space-xl);
+  flex: 1;
+  align-content: center;
+}
+
+/* ─── Text column ─── */
+.content {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* ─── Eyebrow ─── */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  opacity: 0;
+  animation: fadeSlideUp var(--duration-signature) var(--ease-standard) forwards;
+  animation-delay: 100ms;
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* ─── Headline ─── */
+.headline {
+  max-width: 14ch;
+  opacity: 0;
+  animation: fadeSlideUp var(--duration-signature) var(--ease-standard) forwards;
+  animation-delay: 200ms;
+}
+
+/* ─── Supporting copy ─── */
+.supportingCopy {
+  max-width: 540px;
+  opacity: 0;
+  animation: fadeSlideUp var(--duration-signature) var(--ease-standard) forwards;
+  animation-delay: 400ms;
+}
+
+/* ─── CTA row ─── */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  padding-block-start: var(--space-xs);
+  opacity: 0;
+  animation: fadeSlideUp var(--duration-signature) var(--ease-standard) forwards;
+  animation-delay: 600ms;
+}
+
+.primaryCta {
+  gap: var(--space-xs);
+}
+
+.arrow {
+  display: inline-block;
+  transition: transform var(--duration-micro) var(--ease-standard);
+}
+
+.primaryCta:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* ─── Metadata strip ─── */
+.metaStrip {
+  display: none;
+}
+
+/* ─── Visual container ─── */
+.visualWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ─── Fade-in keyframe ─── */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ════════════════════════════════════════════════
+   TABLET  (768 px+)
+   ════════════════════════════════════════════════ */
+@media (min-width: 768px) {
+  .content {
+    grid-column: 1 / 7;
+  }
+
+  .metaStrip {
+    display: flex;
+    gap: var(--space-lg);
+    padding-block-start: var(--space-md);
+    border-top: var(--border-width) solid var(--color-border);
+    opacity: 0;
+    animation: fadeSlideUp var(--duration-signature) var(--ease-standard) forwards;
+    animation-delay: 800ms;
+  }
+
+  .metaItem {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .metaId {
+    font-family: var(--font-body);
+    font-size: var(--text-label-size);
+    font-weight: var(--font-weight-label);
+    letter-spacing: var(--text-label-tracking);
+    text-transform: uppercase;
+    color: var(--color-accent);
+    line-height: var(--text-label-leading);
+  }
+
+  .metaLabel {
+    font-family: var(--font-display);
+    font-size: var(--text-small-size);
+    font-weight: var(--font-weight-heading);
+    color: var(--color-text-primary);
+    line-height: var(--text-small-leading);
+  }
+
+  .metaDesc {
+    font-family: var(--font-body);
+    font-size: var(--text-label-size);
+    font-weight: var(--font-weight-body);
+    color: var(--color-text-muted);
+    letter-spacing: var(--text-label-tracking);
+    text-transform: uppercase;
+    line-height: var(--text-label-leading);
+  }
+}
+
+/* ════════════════════════════════════════════════
+   DESKTOP  (1200 px+)
+   ════════════════════════════════════════════════ */
+@media (min-width: 1200px) {
+  .content {
+    grid-column: 1 / 8;
+  }
+
+  .visualWrap {
+    /* Let the visual occupy the right side on desktop */
+    position: absolute;
+    inset-block: 0;
+    inset-inline-start: 55%;
+    inset-inline-end: 0;
+  }
+}
+
+/* ════════════════════════════════════════════════
+   REDUCED MOTION
+   ════════════════════════════════════════════════ */
+@media (prefers-reduced-motion: reduce) {
+  .eyebrow,
+  .headline,
+  .supportingCopy,
+  .actions,
+  .metaStrip {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+
+  .primaryCta:hover .arrow {
+    transform: none;
+  }
+}

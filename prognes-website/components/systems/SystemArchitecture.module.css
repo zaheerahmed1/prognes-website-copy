@@ -1,0 +1,133 @@
+/* ─── Base / Mobile (Vertical Stack) ─── */
+.architecture {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-top: var(--space-xl);
+  position: relative;
+}
+
+.node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-lg);
+  border: var(--border-width) solid var(--color-border);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-sm);
+  text-align: center;
+  align-items: center;
+}
+
+.nodeHeader {
+  font-family: var(--font-display);
+  font-size: var(--text-h3-size);
+  font-weight: var(--font-weight-heading);
+  color: var(--color-text-primary);
+  letter-spacing: var(--text-h3-tracking);
+  line-height: var(--text-h3-leading);
+}
+
+.nodeDesc {
+  font-family: var(--font-body);
+  font-size: var(--text-body-size);
+  color: var(--color-text-secondary);
+  line-height: var(--text-body-leading);
+}
+
+/* Vertical connections on mobile */
+.node:not(:last-child)::after {
+  content: "↓";
+  position: absolute;
+  bottom: calc(var(--space-md) * -1);
+  left: 50%;
+  transform: translateX(-50%) translateY(50%);
+  color: var(--color-text-muted);
+  font-size: 14px;
+  line-height: 1;
+  z-index: 2;
+}
+
+/* ════════════════════════════════════════════════
+   DESKTOP (3x2 Snake Architecture)
+   ════════════════════════════════════════════════ */
+@media (min-width: 1024px) {
+  .architecture {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+
+  .node {
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  /* Reset mobile connection */
+  .node::after {
+    display: none;
+  }
+
+  /* Structural visual lines connecting the nodes */
+  .node::before {
+    content: "";
+    position: absolute;
+    background-color: var(--color-border-strong);
+    z-index: -1;
+  }
+
+  /* Horizontal connecting lines for Row 1 (1->2, 2->3) */
+  .node:nth-child(1)::before,
+  .node:nth-child(2)::before {
+    top: 50%;
+    right: calc(var(--space-xl) * -1);
+    width: var(--space-xl);
+    height: var(--border-width);
+    transform: translateY(-50%);
+  }
+
+  /* Vertical connecting line from Row 1 to Row 2 (3->4) */
+  .node:nth-child(3)::before {
+    bottom: calc(var(--space-xl) * -1);
+    left: 50%;
+    width: var(--border-width);
+    height: var(--space-xl);
+    transform: translateX(-50%);
+  }
+
+  /* Horizontal connecting lines for Row 2, reversed flow (4->5, 5->6) */
+  /* Wait, grid flows left-to-right natively, so item 4 is on the left, 5 middle, 6 right.
+     To make it snake, we connect 4 (left) to 5, 5 to 6. 
+     If we want a visual snake where 3 drops to 6 (right), we need to reorder them on desktop. */
+     
+  .node:nth-child(4) {
+    grid-column: 3;
+    grid-row: 2;
+  }
+  .node:nth-child(5) {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .node:nth-child(6) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  /* Connect 4(right) to 5(middle) */
+  .node:nth-child(4)::before {
+    top: 50%;
+    left: calc(var(--space-xl) * -1);
+    width: var(--space-xl);
+    height: var(--border-width);
+    transform: translateY(-50%);
+  }
+
+  /* Connect 5(middle) to 6(left) */
+  .node:nth-child(5)::before {
+    top: 50%;
+    left: calc(var(--space-xl) * -1);
+    width: var(--space-xl);
+    height: var(--border-width);
+    transform: translateY(-50%);
+  }
+}

@@ -1,0 +1,124 @@
+.problem {
+  position: relative;
+  background-color: var(--color-bg);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.intro {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  color: var(--color-text-muted);
+}
+
+.eyebrowDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.headline {
+  white-space: pre-line;
+  max-width: 20ch;
+}
+
+.supportingCopy {
+  max-width: 480px;
+  color: var(--color-text-secondary);
+}
+
+/* ─── Friction List ─── */
+.frictionList {
+  display: flex;
+  flex-direction: column;
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.frictionItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding-block: var(--space-lg);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.frictionIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  border: var(--border-width) solid var(--color-border-strong);
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* Subtle cross pattern to represent friction / manual work */
+.frictionIcon::before,
+.frictionIcon::after {
+  content: "";
+  position: absolute;
+  background-color: currentColor;
+  opacity: 0.5;
+}
+
+.frictionIcon::before {
+  width: 12px;
+  height: 1px;
+}
+
+.frictionIcon::after {
+  width: 1px;
+  height: 12px;
+}
+
+.frictionText {
+  font-family: var(--font-display);
+  font-size: var(--text-h3-size);
+  font-weight: var(--font-weight-heading);
+  letter-spacing: var(--text-h3-tracking);
+  line-height: var(--text-h3-leading);
+  color: var(--color-text-primary);
+}
+
+/* ════════════════════════════════════════════════
+   TABLET  (768 px+)
+   ════════════════════════════════════════════════ */
+@media (min-width: 768px) {
+  .frictionItem {
+    padding-block: var(--space-xl);
+  }
+}
+
+/* ════════════════════════════════════════════════
+   DESKTOP  (1200 px+)
+   ════════════════════════════════════════════════ */
+@media (min-width: 1200px) {
+  .grid {
+    align-items: flex-start;
+  }
+  
+  .introWrapper {
+    position: sticky;
+    top: calc(var(--nav-height) + var(--space-section));
+  }
+
+  .frictionList {
+    border-top: none;
+  }
+
+  .frictionItem:first-child {
+    padding-top: 0;
+  }
+}
