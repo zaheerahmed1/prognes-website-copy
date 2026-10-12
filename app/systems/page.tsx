@@ -12,6 +12,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: `${systemsPage.title} — ${site.wordmark}`,
   description: "Connected intelligent systems, automation, and operational leverage.",
+  alternates: { canonical: "/systems" },
 };
 
 export default function SystemsPage() {

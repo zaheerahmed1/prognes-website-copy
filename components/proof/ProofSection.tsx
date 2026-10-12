@@ -2,6 +2,7 @@ import { Section } from "@/components/primitives/Section/Section";
 import { Container } from "@/components/primitives/Grid/Grid";
 import { Eyebrow } from "@/components/primitives/Eyebrow/Eyebrow";
 import { Heading } from "@/components/primitives/Heading/Heading";
+import { Body } from "@/components/primitives/Body/Body";
 import { SectionReveal } from "@/components/motion/SectionReveal";
 import styles from "./ProofSection.module.css";
 
@@ -31,25 +32,10 @@ export function ProofSection() {
               {/* Real verified metrics/testimonials will go here */}
             </div>
           ) : (
-            <div className={styles.emptyState}>
-              <div className={styles.structuralFramework}>
-                <div className={styles.emptyMetric}>
-                  <span className={styles.emptyLabel}>VERIFIED METRIC</span>
-                  <span className={styles.emptyValue}>--</span>
-                </div>
-                <div className={styles.emptyMetric}>
-                  <span className={styles.emptyLabel}>VERIFIED METRIC</span>
-                  <span className={styles.emptyValue}>--</span>
-                </div>
-                <div className={styles.emptyMetric}>
-                  <span className={styles.emptyLabel}>VERIFIED METRIC</span>
-                  <span className={styles.emptyValue}>--</span>
-                </div>
-              </div>
-              <p className={styles.emptyDisclaimer}>
-                Verified results, case studies, and partner logic will populate here. We do not invent numbers to fill space.
-              </p>
-            </div>
+            <Body className={styles.emptyDisclaimer}>
+              Verified results, case studies, and outcomes will be published
+              here as production systems are delivered.
+            </Body>
           )}
         </SectionReveal>
       </Container>

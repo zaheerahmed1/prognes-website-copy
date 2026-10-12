@@ -5,6 +5,7 @@ import styles from "./Footer.module.css";
 
 export function Footer() {
   const ctaHref = nav.primaryCta.href;
+  const year = new Date().getFullYear();
 
   return (
     <footer className={styles.footer}>
@@ -13,7 +14,7 @@ export function Footer() {
           <Link className={styles.wordmark} href="/">
             {site.wordmark}
           </Link>
-          
+
           {ctaHref ? (
             <Link href={ctaHref} className={styles.primaryCta}>
               {nav.primaryCta.label} <span aria-hidden="true">&rarr;</span>
@@ -24,7 +25,7 @@ export function Footer() {
             </div>
           )}
         </div>
-        
+
         <div className={styles.bottomRow}>
           <nav aria-label={footer.navLabel}>
             <ul className={styles.list}>
@@ -38,11 +39,9 @@ export function Footer() {
             </ul>
           </nav>
 
-          {/* Structural slots for unapproved/missing content */}
-          <div className={styles.missingContentSlots}>
-            <div className={styles.slot}>[Social Links Config Pending]</div>
-            <div className={styles.slot}>[Legal Links Config Pending]</div>
-          </div>
+          <p className={styles.copyright}>
+            &copy; {year} PROGNES. All rights reserved.
+          </p>
         </div>
       </Container>
     </footer>

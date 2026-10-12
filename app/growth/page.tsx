@@ -11,6 +11,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: `${growthPage.title} — ${site.wordmark}`,
   description: "Creative production and AI-amplified growth leverage.",
+  alternates: { canonical: "/growth" },
 };
 
 export default function GrowthPage() {

@@ -21,7 +21,7 @@ export function FinalCTA() {
               Take Action
             </Eyebrow>
 
-            <Heading variant="h1" className={styles.headline}>
+            <Heading variant="h2" className={styles.headline}>
               Build your advantage.
             </Heading>
 
@@ -36,24 +36,12 @@ export function FinalCTA() {
                 </div>
               )}
 
-              {secondaryCta && (
-                secondaryCta.href ? (
-                  <Link href={secondaryCta.href} className={styles.secondaryBtn}>
-                    {secondaryCta.label}
-                  </Link>
-                ) : (
-                  <div className={styles.secondaryBtnDisabled} aria-disabled="true">
-                    {secondaryCta.label}
-                  </div>
-                )
+              {secondaryCta && secondaryCta.href && (
+                <Link href={secondaryCta.href} className={styles.secondaryBtn}>
+                  {secondaryCta.label}
+                </Link>
               )}
             </div>
-            
-            {(!primaryHref || (secondaryCta && !secondaryCta.href)) && (
-              <p className={styles.missingConfigMsg}>
-                Destination URLs are not configured. Please add URLs to content/cta.ts.
-              </p>
-            )}
           </div>
         </SectionReveal>
       </Container>

@@ -5,11 +5,14 @@ import { Section } from "@/components/primitives/Section/Section";
 import { Container } from "@/components/primitives/Grid/Grid";
 import { Eyebrow } from "@/components/primitives/Eyebrow/Eyebrow";
 import { Heading } from "@/components/primitives/Heading/Heading";
+import { Body } from "@/components/primitives/Body/Body";
 import styles from "./page.module.css";
 
 export const metadata: Metadata = {
   title: `${aboutPage.title} — ${site.wordmark}`,
-  description: "Learn more about our agency's philosophy and core brand positioning.",
+  description:
+    "PROGNES engineers systems that create operational leverage. AI Growth and AI Systems — built as one operating loop.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
@@ -27,17 +30,21 @@ export default function AboutPage() {
               {site.wordmark}
             </Heading>
 
-            <div className={styles.emptyState}>
-              <h3 className={styles.emptyTitle}>
-                [About Content Pending]
-              </h3>
-              <p className={styles.emptyDesc}>
-                The detailed agency narrative, philosophy, and positioning will populate here once approved. We do not invent biographies, mission claims, or statistics to fill space.
-              </p>
-            </div>
+            <Body variant="large" className={styles.statement}>
+              We engineer systems that create operational leverage.
+              Intelligent automation, AI&#x2011;powered growth systems, and
+              agentic infrastructure — built as one continuous operating loop.
+            </Body>
+
+            <Body className={styles.coreIdea}>
+              The core belief: growth and systems are not separate services.
+              Growth creates opportunity. Systems capture, process, and scale it.
+              Together they compound.
+            </Body>
           </div>
         </Container>
       </Section>
     </main>
   );
 }
+

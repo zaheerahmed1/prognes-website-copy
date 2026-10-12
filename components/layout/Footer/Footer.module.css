@@ -83,17 +83,11 @@
   color: var(--color-text-primary);
 }
 
-.missingContentSlots {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-}
-
-.slot {
+.copyright {
+  margin: 0;
   font-family: var(--font-body);
   font-size: var(--text-small-size);
   color: var(--color-text-muted);
-  font-style: italic;
 }
 
 @media (min-width: 768px) {
@@ -101,11 +95,5 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-  }
-  
-  .missingContentSlots {
-    flex-direction: row;
-    align-items: center;
-    gap: var(--space-lg);
   }
 }

@@ -20,7 +20,14 @@ const inter = Inter({
   weight: ["400", "500"],
 });
 
-export const metadata: Metadata = createRootMetadata();
+export const metadata: Metadata = {
+  ...createRootMetadata(),
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+    ],
+  },
+};
 
 export const viewport: Viewport = {
   themeColor: "#0a0a0a",
