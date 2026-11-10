@@ -1,8 +1,10 @@
 import { systemsPage } from "@/content/systems";
+import { routes } from "@/content/nav";
 import { Section } from "@/components/primitives/Section/Section";
 import { Container } from "@/components/primitives/Grid/Grid";
 import { Eyebrow } from "@/components/primitives/Eyebrow/Eyebrow";
 import { Heading } from "@/components/primitives/Heading/Heading";
+import { Button } from "@/components/primitives/Button/Button";
 import { SystemArchitecture } from "./SystemArchitecture";
 import { SystemModule } from "./SystemModule";
 import { SystemsMotion } from "./SystemsMotion";
@@ -51,6 +53,17 @@ export function SystemsSection() {
             <div className={`${styles.architectureWrapper} js-systems-architecture`}>
               <SystemArchitecture />
             </div>
+          </div>
+
+          <div className={styles.footerAction}>
+            <Button
+              variant="secondary"
+              href={routes.workAutomation}
+              className={styles.exploreLink}
+            >
+              Explore AI Systems &amp; Architecture
+              <span className={styles.actionArrow} aria-hidden="true">→</span>
+            </Button>
           </div>
         </SystemsMotion>
       </Container>

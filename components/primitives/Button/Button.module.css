@@ -33,6 +33,7 @@
 
 .primary:hover:not(:disabled) {
   transform: translateY(-1px);
+  box-shadow: 0 0 28px var(--color-glow-green-strong), 0 0 8px var(--color-glow-green-mid);
 }
 
 .secondary {

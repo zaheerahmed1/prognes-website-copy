@@ -2,81 +2,274 @@
   margin-top: var(--space-xl);
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: var(--space-lg);
   padding: var(--space-xl) 0;
   border-top: var(--border-width) solid var(--color-border);
 }
 
-.pillars {
+.pipelineContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  width: 100%;
+}
+
+.pillarGrowth,
+.pillarSystems {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.pillarGrowth {
+  border-left: 3px solid var(--color-accent);
+}
+
+.pillarSystems {
+  border-left: 3px solid var(--color-border-strong);
+}
+
+.pillarHeader {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  padding-bottom: var(--space-sm);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.pillarTitleRow {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
+}
+
+.pillarTag {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  background: var(--color-accent-soft);
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+.pillarPillar {
   font-family: var(--font-display);
   font-size: var(--text-h3-size);
-  color: var(--color-accent);
+  color: var(--color-text-primary);
   letter-spacing: var(--text-h3-tracking);
   font-weight: var(--font-weight-heading);
 }
 
-.pillarSeparator {
-  color: var(--color-text-muted);
-}
-
-.flow {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-sm);
-  padding: var(--space-xl);
-  background-color: var(--color-surface);
-  border: var(--border-width) solid var(--color-border);
-  border-radius: var(--radius-sm);
-}
-
-.stepWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-sm);
-}
-
-.step {
+.pillarTagline {
   font-family: var(--font-body);
-  font-size: var(--text-label-size);
-  color: var(--color-text-primary);
-  letter-spacing: var(--text-label-tracking);
+  font-size: var(--text-small-size);
+  color: var(--color-text-muted);
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  padding: var(--space-sm) var(--space-md);
+}
+
+.stageGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md);
+}
+
+.stageCard {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  padding: var(--space-md);
+  background-color: var(--color-bg);
   border: var(--border-width) solid var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  transition: border-color var(--duration-micro) var(--ease-standard);
+}
+
+.stageCard:hover {
+  border-color: var(--color-accent);
+}
+
+.stageTop {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.stageNum {
+  font-family: var(--font-mono, monospace);
+  font-size: var(--text-small-size);
+  color: var(--color-accent);
+  font-weight: 600;
+}
+
+.stageName {
+  font-family: var(--font-display);
+  font-size: var(--text-body-size);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-heading);
+  letter-spacing: 0.06em;
+}
+
+.stageDesc {
+  font-family: var(--font-body);
+  font-size: var(--text-small-size);
+  color: var(--color-text-secondary);
+  line-height: var(--text-body-leading);
+  margin: 0;
+}
+
+.stageArrow {
+  display: none;
+}
+
+/* ─── Central Forward Bridge ─── */
+.centralBridge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xs) var(--space-md);
+}
+
+.bridgeConduit {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.bridgeLine {
+  display: none;
+}
+
+.bridgePill {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: var(--color-accent);
+  padding: 4px 10px;
+  background-color: var(--color-accent-soft);
+  border: var(--border-width) solid rgba(214, 255, 63, 0.3);
   border-radius: var(--radius-pill);
 }
 
-.arrow {
-  color: var(--color-text-muted);
-  font-size: var(--text-small-size);
+.bridgeArrow {
+  color: var(--color-accent);
+  font-size: 16px;
+  transform: rotate(90deg);
 }
 
-@media (min-width: 768px) {
-  .pillars {
-    justify-content: flex-start;
-    gap: var(--space-xl);
-    font-size: var(--text-h2-size);
+/* ─── Restrained Feedback Conduit ─── */
+.feedbackConduit {
+  width: 100%;
+  padding-top: var(--space-sm);
+}
+
+.conduitRail {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm) var(--space-md);
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px dashed var(--color-border-strong);
+  border-radius: var(--radius-sm);
+  gap: var(--space-sm);
+}
+
+.conduitTrack {
+  display: none;
+}
+
+.conduitMarkerStart,
+.conduitMarkerEnd {
+  font-family: var(--font-mono, monospace);
+  font-size: 14px;
+  color: var(--color-accent);
+}
+
+.conduitPill {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  text-align: center;
+}
+
+.conduitDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  box-shadow: 0 0 6px var(--color-accent);
+  flex-shrink: 0;
+}
+
+.conduitText {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+}
+
+/* ════════════════════════════════════════════════
+   DESKTOP / TABLET (Side-by-Side Unified Pipeline)
+   ════════════════════════════════════════════════ */
+@media (min-width: 960px) {
+  .pipelineContainer {
+    flex-direction: row;
+    align-items: stretch;
   }
 
-  .flow {
-    flex-direction: row;
-    flex-wrap: wrap;
+  .pillarGrowth,
+  .pillarSystems {
+    flex: 1;
+  }
+
+  .stageGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stageArrow {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: -14px;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: var(--color-accent);
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    gap: var(--space-md);
+    z-index: 2;
   }
 
-  .stepWrapper {
-    flex-direction: row;
-    gap: var(--space-md);
+  .centralBridge {
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 var(--space-xs);
   }
 
-  .arrow {
+  .bridgeArrow {
+    transform: rotate(0deg);
+  }
+
+  .conduitMarkerStart {
+    transform: rotate(-90deg);
+  }
+
+  .conduitMarkerEnd {
     transform: rotate(-90deg);
   }
 }

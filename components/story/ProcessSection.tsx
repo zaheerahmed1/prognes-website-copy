@@ -24,7 +24,7 @@ export function ProcessSection() {
 
           <div className={`${styles.processFlow} js-process-flow`}>
             {processData.stages.map((stage, idx) => (
-              <div key={stage.id} className={`${styles.stage} js-process-stage`}>
+              <div key={stage.id} className={`${styles.stage} js-process-stage`} data-index={`0${idx + 1}`}>
                 <div className={styles.stageHeader}>
                   <span className={`${styles.stageIndex} js-process-index`}>0{idx + 1}</span>
                   <h3 className={styles.stageLabel}>{stage.label}</h3>

@@ -1,19 +1,61 @@
 .section {
   position: relative;
   background-color: var(--color-bg);
-  border-top: var(--border-width) solid var(--color-border);
+  border-top: var(--border-width) solid rgba(255, 255, 255, 0.05);
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* Cinematic centred glow — most atmospheric moment on the page */
+.section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 80% 70% at 50% 50%,
+      rgba(214, 255, 63, 0.08) 0%,
+      rgba(214, 255, 63, 0.03) 40%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 40% at 50% 40%,
+      rgba(0, 30, 0, 0.4) 0%,
+      transparent 60%
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Subtle noise grain for depth */
+.section::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.4;
 }
 
 .content {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  max-width: 800px;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  max-width: 860px;
+  margin-inline: auto;
 }
 
 .eyebrow {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: var(--space-xs);
   color: var(--color-text-muted);
 }
@@ -24,18 +66,53 @@
   border-radius: 50%;
   background-color: var(--color-accent);
   flex-shrink: 0;
+  box-shadow: 0 0 8px var(--color-glow-green-mid);
 }
 
 .headline {
   margin-block-start: var(--space-md);
+  margin-block-end: var(--space-sm);
+}
+
+.subtext {
+  font-family: var(--font-body);
+  font-size: var(--text-body-size);
+  color: var(--color-text-secondary);
+  line-height: var(--text-body-leading);
+  max-width: 52ch;
   margin-block-end: var(--space-xl);
 }
 
 .actions {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: var(--space-md);
   width: 100%;
+}
+
+.externalArrow {
+  display: inline-block;
+  margin-inline-start: var(--space-xs);
+  transition: transform var(--duration-micro) var(--ease-standard);
+}
+
+.secondaryBtn:hover .externalArrow {
+  transform: translate(2px, -2px);
+}
+
+.reassurance {
+  margin-block-start: var(--space-xl);
+  padding-block-start: var(--space-lg);
+  border-top: var(--border-width) solid rgba(255, 255, 255, 0.06);
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: var(--text-small-size);
+  color: var(--color-text-muted);
+  line-height: var(--text-small-leading);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .primaryBtn, .primaryBtnDisabled {
@@ -43,7 +120,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--space-sm);
-  height: 52px;
+  height: 56px;
   padding: 0 var(--space-xl);
   background-color: var(--color-accent);
   color: var(--color-accent-contrast);
@@ -52,20 +129,23 @@
   font-weight: var(--font-weight-button);
   text-decoration: none;
   border-radius: var(--radius-pill);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  min-width: 200px;
+  transition: opacity 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  min-width: 220px;
 }
 
 .primaryBtn:hover {
-  opacity: 0.9;
+  opacity: 0.95;
   transform: translateY(-2px);
+  box-shadow:
+    0 0 40px var(--color-glow-green-strong),
+    0 0 80px var(--color-glow-green);
 }
 
 .secondaryBtn, .secondaryBtnDisabled {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  height: 52px;
+  height: 56px;
   padding: 0 var(--space-xl);
   background-color: transparent;
   color: var(--color-text-primary);
@@ -98,6 +178,13 @@
 @media (min-width: 768px) {
   .actions {
     flex-direction: row;
+    justify-content: center;
     width: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .primaryBtn:hover {
+    transform: none;
   }
 }

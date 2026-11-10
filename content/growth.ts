@@ -1,7 +1,7 @@
 import { routes } from "@/content/nav";
 
 export const growthPage = {
-  path: routes.growth,
+  path: routes.workCreative,
   title: "AI Growth",
   capabilities: [
     { id: "ugc", label: "AI UGC" },

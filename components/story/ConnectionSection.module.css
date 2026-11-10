@@ -1,27 +1,49 @@
 .connection {
   position: relative;
   background-color: var(--color-bg);
+  border-top: var(--border-width) solid rgba(255, 255, 255, 0.06);
   overflow: hidden;
+}
+
+/* Atmospheric center glow bridging the two pillars */
+.connection::before {
+  content: "";
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 700px;
+  height: 500px;
+  background: radial-gradient(
+    ellipse at center,
+    var(--color-glow-green-subtle) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
 }
 
 .intro {
   margin-bottom: var(--space-xl);
   max-width: 680px;
+  position: relative;
+  z-index: 1;
 }
 
 .eyebrow {
   display: flex;
   align-items: center;
   gap: var(--space-xs);
-  color: var(--color-text-muted);
+  color: var(--color-accent);
 }
 
 .eyebrowDot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: var(--color-text-muted);
+  background-color: var(--color-accent);
   flex-shrink: 0;
+  box-shadow: 0 0 8px var(--color-glow-green-mid);
 }
 
 .headline {

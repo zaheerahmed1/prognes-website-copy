@@ -3,25 +3,16 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { growthPage } from "@/content/growth";
 import { allowsMotion } from "@/lib/motion";
-import sectionStyles from "./GrowthSection.module.css";
+import { GrowthMediaCard } from "./GrowthMediaCard";
 import styles from "./GrowthSelector.module.css";
 
 type Capability = typeof growthPage.selector[number];
 
 /**
- * Visual media placeholder representing the specific capability.
+ * Architectural capability card representation for the selected capability.
  */
 function GrowthMedia({ item }: { item: Capability }) {
-  return (
-    <div className={sectionStyles.mediaWrap}>
-      <div className={sectionStyles.mediaLines} aria-hidden="true" />
-      <div className={sectionStyles.mediaCenter}>
-        {/* Placeholder structural icon */}
-        <div className={sectionStyles.mediaIcon}>+</div>
-        <span className={sectionStyles.mediaLabel}>{item.label} Visual</span>
-      </div>
-    </div>
-  );
+  return <GrowthMediaCard capabilityId={item.id} />;
 }
 
 /**

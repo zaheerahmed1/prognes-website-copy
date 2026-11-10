@@ -1,20 +1,37 @@
 .systems {
   position: relative;
   background-color: var(--color-bg);
-  border-top: var(--border-width) solid var(--color-border);
+  border-top: var(--border-width) solid rgba(255, 255, 255, 0.06);
   overflow: hidden;
 }
 
-/* Subtle background grid pattern to emphasize 'Systems' */
+/* Atmospheric intelligence source glow in top-right */
+.systems::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle at 50% 0%,
+    var(--color-glow-green-mid) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Systems grid texture */
 .systems::before {
   content: "";
   position: absolute;
   inset: 0;
-  opacity: 0.05;
+  opacity: 0.04;
   background-image: 
-    linear-gradient(to right, var(--color-text-primary) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--color-text-primary) 1px, transparent 1px);
-  background-size: 40px 40px;
+    linear-gradient(to right, #ffffff 1px, transparent 1px),
+    linear-gradient(to bottom, #ffffff 1px, transparent 1px);
+  background-size: 60px 60px;
   pointer-events: none;
   z-index: 0;
 }
@@ -32,15 +49,16 @@
   display: flex;
   align-items: center;
   gap: var(--space-xs);
-  color: var(--color-text-muted);
+  color: var(--color-accent);
 }
 
 .eyebrowDot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: var(--color-text-muted);
+  background-color: var(--color-accent);
   flex-shrink: 0;
+  box-shadow: 0 0 8px var(--color-glow-green-mid);
 }
 
 .headline {
@@ -117,3 +135,24 @@
     gap: var(--space-lg);
   }
 }
+
+/* ─── Editorial Exploration Action ─── */
+.footerAction {
+  margin-block-start: var(--space-xl);
+  display: flex;
+  justify-content: flex-start;
+}
+
+.exploreLink {
+  gap: var(--space-xs);
+}
+
+.actionArrow {
+  display: inline-block;
+  transition: transform var(--duration-micro) var(--ease-standard);
+}
+
+.exploreLink:hover .actionArrow {
+  transform: translateX(4px);
+}
+

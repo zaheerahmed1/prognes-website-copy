@@ -6,7 +6,7 @@
 
 .intro {
   margin-bottom: var(--space-xl);
-  max-width: 680px;
+  max-width: 720px;
 }
 
 .eyebrow {
@@ -20,84 +20,239 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: var(--color-text-muted);
+  background-color: var(--color-accent);
   flex-shrink: 0;
 }
 
 .headline {
   margin-block-start: var(--space-md);
+  margin-block-end: var(--space-xs);
 }
 
-.showcaseGrid {
-  display: grid;
-  gap: var(--space-xl);
-}
-
-/* Empty State / Framework */
-.emptyState {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-lg);
-  margin-top: var(--space-xl);
-}
-
-.emptyMediaFrame {
-  width: 100%;
-  aspect-ratio: 16/9;
-  background-color: var(--color-surface);
-  border: var(--border-width) solid var(--color-border);
-  border-radius: var(--radius-sm);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-.emptyLabel {
-  font-family: var(--font-body);
-  font-size: var(--text-label-size);
-  color: var(--color-text-muted);
-  letter-spacing: var(--text-label-tracking);
-}
-
-.emptyDetails {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-xs);
-}
-
-.emptyTitle {
-  font-family: var(--font-display);
-  font-size: var(--text-h3-size);
-  color: var(--color-text-primary);
-  letter-spacing: var(--text-h3-tracking);
-}
-
-.emptyDesc {
+.subtext {
   font-family: var(--font-body);
   font-size: var(--text-body-size);
   color: var(--color-text-secondary);
-  max-width: 480px;
   line-height: var(--text-body-leading);
+  margin: 0;
 }
 
-/* ════════════════════════════════════════════════
-   DESKTOP
-   ════════════════════════════════════════════════ */
+.showcaseGrid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+/* ─── Architectural Blueprint Card ─── */
+.blueprintCard {
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color var(--duration-micro) var(--ease-standard);
+}
+
+.blueprintCard:hover {
+  border-color: var(--color-border-strong);
+}
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-lg);
+  background-color: rgba(255, 255, 255, 0.02);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.cardIdent {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.cardCode {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+}
+
+.cardCategory {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  padding-left: var(--space-xs);
+  border-left: var(--border-width) solid var(--color-border);
+}
+
+.cardStatus {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  background-color: var(--color-accent-soft);
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  border: var(--border-width) solid rgba(214, 255, 63, 0.2);
+}
+
+.cardContent {
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.cardTitle {
+  font-family: var(--font-display);
+  font-size: var(--text-h3-size);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-heading);
+  letter-spacing: var(--text-h3-tracking);
+  margin: 0;
+}
+
+.cardSummary {
+  font-family: var(--font-body);
+  font-size: var(--text-body-size);
+  color: var(--color-text-secondary);
+  line-height: var(--text-body-leading);
+  max-width: 65ch;
+  margin: 0;
+}
+
+/* ─── Architecture Pipeline ─── */
+.pipeline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background-color: var(--color-bg);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+  margin-top: var(--space-xs);
+}
+
+.pipelineNode,
+.pipelineNodeCenter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+}
+
+.nodeRole {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+}
+
+.nodeList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.orchestrationText {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+
+.pipelineArrow {
+  color: var(--color-text-muted);
+  font-size: 14px;
+  text-align: center;
+}
+
+/* ─── Card Footer / Telemetry & Link ─── */
+.cardFooter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  background-color: rgba(0, 0, 0, 0.25);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-md);
+}
+
+.specItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+}
+
+.specLabel {
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.specValue {
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.cardLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2xs);
+  font-family: var(--font-body);
+  font-size: var(--text-small-size);
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 500;
+  transition: transform var(--duration-micro) var(--ease-standard);
+  align-self: flex-start;
+}
+
+.cardLink:hover {
+  transform: translateX(4px);
+}
+
 @media (min-width: 768px) {
-  .emptyState {
+  .pipeline {
     flex-direction: row;
-    gap: calc(var(--space-xl) * 2);
-    align-items: flex-start;
+    align-items: center;
+    justify-content: space-between;
   }
 
-  .emptyMediaFrame {
-    flex: 2;
-    aspect-ratio: 16/10; /* more editorial proportion */
-  }
-
-  .emptyDetails {
+  .pipelineNode {
     flex: 1;
-    padding-top: var(--space-md);
+  }
+
+  .pipelineNodeCenter {
+    flex: 1.2;
+    padding: 0 var(--space-sm);
+    border-left: var(--border-width) solid var(--color-border);
+    border-right: var(--border-width) solid var(--color-border);
+  }
+
+  .cardFooter {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
   }
 }
+

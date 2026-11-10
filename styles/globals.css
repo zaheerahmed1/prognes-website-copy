@@ -120,3 +120,34 @@ p {
   transform: translateY(0);
 }
 
+/* ─────────────────────────────────────────────────
+   ATMOSPHERIC GLOW — reusable pseudo-element utility
+   Apply via ::before on any section wrapper.
+   Position relative/absolute required on parent.
+   ───────────────────────────────────────────────── */
+.atm-glow-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 80% at 75% 45%,
+    var(--color-glow-green) 0%,
+    transparent 65%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.atm-glow-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 60% 60% at 50% 0%,
+    var(--color-glow-green-subtle) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+

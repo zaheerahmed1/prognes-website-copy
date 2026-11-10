@@ -134,11 +134,11 @@ export function HeroScene() {
       new THREE.MeshPhysicalMaterial({
         color: new THREE.Color("#000000"),
         emissive: ACCENT,
-        emissiveIntensity: 0.05,
-        roughness: 0.2,
-        metalness: 0.8,
-        transmission: 0.9,
-        thickness: 0.5,
+        emissiveIntensity: 0.12,
+        roughness: 0.15,
+        metalness: 0.9,
+        transmission: 0.85,
+        thickness: 0.6,
         ior: 1.5,
         transparent: true,
       }),
@@ -192,11 +192,13 @@ export function HeroScene() {
 
   return (
     <>
-      {/* Soft ambient + directional for subtle depth */}
-      <ambientLight intensity={0.3} />
-      <directionalLight position={[5, 5, 5]} intensity={0.4} />
-      {/* Accent light for the physical material */}
-      <pointLight position={[-2, 2, 2]} color={ACCENT} intensity={0.5} distance={10} />
+      {/* Deep dark ambient + directional for architectural depth */}
+      <ambientLight intensity={0.15} color="#001a00" />
+      <directionalLight position={[3, 5, 4]} intensity={0.25} color="#ffffff" />
+      {/* Primary accent — lime point light matching CSS atmospheric glow */}
+      <pointLight position={[-1.5, 2, 3]} color={ACCENT} intensity={1.2} distance={12} decay={2} />
+      {/* Secondary fill — deeper green from below for volumetric depth */}
+      <pointLight position={[2, -3, 1]} color={new THREE.Color("#00ff40")} intensity={0.2} distance={8} decay={2} />
 
       <group ref={groupRef}>
         {/* Outer octahedron — infrastructure frame */}

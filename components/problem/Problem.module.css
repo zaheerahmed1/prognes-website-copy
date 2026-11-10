@@ -1,7 +1,24 @@
 .problem {
   position: relative;
   background-color: var(--color-bg);
-  border-top: var(--border-width) solid var(--color-border);
+  border-top: var(--border-width) solid rgba(255, 255, 255, 0.06);
+  overflow: hidden;
+}
+
+/* Subtle diagonal friction texture */
+.problem::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.012) 0px,
+    rgba(255, 255, 255, 0.012) 1px,
+    transparent 1px,
+    transparent 32px
+  );
+  pointer-events: none;
+  z-index: 0;
 }
 
 .intro {
@@ -9,6 +26,8 @@
   flex-direction: column;
   gap: var(--space-md);
   margin-bottom: var(--space-xl);
+  position: relative;
+  z-index: 1;
 }
 
 .eyebrow {
@@ -41,6 +60,8 @@
   display: flex;
   flex-direction: column;
   border-top: var(--border-width) solid var(--color-border);
+  position: relative;
+  z-index: 1;
 }
 
 .frictionItem {
@@ -49,38 +70,40 @@
   gap: var(--space-md);
   padding-block: var(--space-lg);
   border-bottom: var(--border-width) solid var(--color-border);
+  border-left: 2px solid transparent;
+  padding-inline-start: var(--space-md);
+  transition:
+    border-left-color var(--duration-micro) var(--ease-standard),
+    background-color var(--duration-micro) var(--ease-standard);
+}
+
+.frictionItem:hover {
+  border-left-color: var(--color-accent);
+  background-color: rgba(214, 255, 63, 0.02);
 }
 
 .frictionIcon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
-  border-radius: var(--radius-sm);
-  border: var(--border-width) solid var(--color-border-strong);
-  color: var(--color-text-muted);
+  width: 36px;
+  height: 36px;
   flex-shrink: 0;
-  position: relative;
-}
-
-/* Subtle cross pattern to represent friction / manual work */
-.frictionIcon::before,
-.frictionIcon::after {
-  content: "";
-  position: absolute;
-  background-color: currentColor;
+  color: var(--color-accent);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  font-weight: 600;
   opacity: 0.5;
+  transition: opacity var(--duration-micro) var(--ease-standard);
 }
 
+.frictionItem:hover .frictionIcon {
+  opacity: 1;
+}
+
+/* Replace div icon with × mark via CSS */
 .frictionIcon::before {
-  width: 12px;
-  height: 1px;
-}
-
-.frictionIcon::after {
-  width: 1px;
-  height: 12px;
+  content: "×";
 }
 
 .frictionText {
@@ -120,5 +143,14 @@
 
   .frictionItem:first-child {
     padding-top: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frictionItem {
+    transition: none;
+  }
+  .frictionIcon {
+    transition: none;
   }
 }

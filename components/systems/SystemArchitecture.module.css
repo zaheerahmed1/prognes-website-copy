@@ -1,133 +1,255 @@
-/* ─── Base / Mobile (Vertical Stack) ─── */
-.architecture {
+.blueprintContainer {
+  width: 100%;
+  background-color: var(--color-surface);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  gap: var(--space-md);
-  margin-top: var(--space-xl);
-  position: relative;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
 }
 
-.node {
-  position: relative;
+.blueprintHeader {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-xs) var(--space-md);
+  background-color: rgba(255, 255, 255, 0.02);
+  border-bottom: var(--border-width) solid var(--color-border);
+  flex-wrap: wrap;
   gap: var(--space-xs);
-  padding: var(--space-lg);
-  border: var(--border-width) solid var(--color-border);
-  background-color: var(--color-surface);
-  border-radius: var(--radius-sm);
-  text-align: center;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.blueprintBadge {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  background-color: var(--color-accent-soft);
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+  border: var(--border-width) solid rgba(214, 255, 63, 0.2);
+  text-transform: uppercase;
+}
+
+.blueprintId {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+}
+
+.headerRight {
+  display: flex;
   align-items: center;
 }
 
-.nodeHeader {
-  font-family: var(--font-display);
-  font-size: var(--text-h3-size);
-  font-weight: var(--font-weight-heading);
-  color: var(--color-text-primary);
-  letter-spacing: var(--text-h3-tracking);
-  line-height: var(--text-h3-leading);
-}
-
-.nodeDesc {
-  font-family: var(--font-body);
-  font-size: var(--text-body-size);
-  color: var(--color-text-secondary);
-  line-height: var(--text-body-leading);
-}
-
-/* Vertical connections on mobile */
-.node:not(:last-child)::after {
-  content: "↓";
-  position: absolute;
-  bottom: calc(var(--space-md) * -1);
-  left: 50%;
-  transform: translateX(-50%) translateY(50%);
+.blueprintNotice {
+  font-family: var(--font-mono, monospace);
+  font-size: 9px;
+  letter-spacing: 0.06em;
   color: var(--color-text-muted);
-  font-size: 14px;
-  line-height: 1;
-  z-index: 2;
+  text-transform: uppercase;
 }
 
 /* ════════════════════════════════════════════════
-   DESKTOP (3x2 Snake Architecture)
+   MAIN WORKFLOW GRID
    ════════════════════════════════════════════════ */
-@media (min-width: 1024px) {
-  .architecture {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-xl);
+.workflowGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 24px 24px;
+  position: relative;
+}
+
+.phaseColumn {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  background: rgba(10, 10, 10, 0.4);
+  padding: var(--space-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.phaseHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: var(--space-xs);
+  border-bottom: 1px solid var(--color-border);
+  position: relative;
+}
+
+.phaseHeader::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-accent);
+}
+
+.phaseTitleRow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-xs);
+}
+
+.phaseNumber {
+  font-family: var(--font-mono, monospace);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-accent);
+}
+
+.phaseTitle {
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: var(--font-weight-heading);
+  letter-spacing: 0.06em;
+  color: var(--color-text-primary);
+}
+
+.phaseRole {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--color-text-muted);
+}
+
+.nodeStack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  flex: 1;
+}
+
+.workflowCard {
+  background-color: var(--color-surface-elevated);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xs);
+  transition: border-color var(--duration-micro) var(--ease-standard),
+              transform var(--duration-micro) var(--ease-standard);
+}
+
+.workflowCard:hover {
+  border-color: rgba(214, 255, 63, 0.35);
+  transform: translateY(-2px);
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nodeTag {
+  font-family: var(--font-mono, monospace);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+  background-color: var(--color-accent-soft);
+  padding: 2px 6px;
+  border-radius: 2px;
+  text-transform: uppercase;
+}
+
+.nodeConnectorDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--color-border-strong);
+}
+
+.workflowCard:hover .nodeConnectorDot {
+  background-color: var(--color-accent);
+  box-shadow: 0 0 6px var(--color-accent);
+}
+
+.nodeLabel {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: var(--font-weight-heading);
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.nodeDescription {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+.columnDivider {
+  display: none;
+}
+
+/* ════════════════════════════════════════════════
+   BLUEPRINT FOOTER
+   ════════════════════════════════════════════════ */
+.blueprintFooter {
+  padding: var(--space-xs) var(--space-md);
+  background-color: rgba(0, 0, 0, 0.3);
+  border-top: var(--border-width) solid var(--color-border);
+}
+
+.footerNote {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  color: var(--color-text-muted);
+}
+
+.dotAccent {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+/* ════════════════════════════════════════════════
+   RESPONSIVE (Tablet & Mobile)
+   ════════════════════════════════════════════════ */
+@media (max-width: 1080px) {
+  .workflowGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+@media (max-width: 680px) {
+  .workflowGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
   }
 
-  .node {
-    padding: var(--space-xl) var(--space-lg);
-  }
-
-  /* Reset mobile connection */
-  .node::after {
-    display: none;
-  }
-
-  /* Structural visual lines connecting the nodes */
-  .node::before {
-    content: "";
-    position: absolute;
-    background-color: var(--color-border-strong);
-    z-index: -1;
-  }
-
-  /* Horizontal connecting lines for Row 1 (1->2, 2->3) */
-  .node:nth-child(1)::before,
-  .node:nth-child(2)::before {
-    top: 50%;
-    right: calc(var(--space-xl) * -1);
-    width: var(--space-xl);
-    height: var(--border-width);
-    transform: translateY(-50%);
-  }
-
-  /* Vertical connecting line from Row 1 to Row 2 (3->4) */
-  .node:nth-child(3)::before {
-    bottom: calc(var(--space-xl) * -1);
-    left: 50%;
-    width: var(--border-width);
-    height: var(--space-xl);
-    transform: translateX(-50%);
-  }
-
-  /* Horizontal connecting lines for Row 2, reversed flow (4->5, 5->6) */
-  /* Wait, grid flows left-to-right natively, so item 4 is on the left, 5 middle, 6 right.
-     To make it snake, we connect 4 (left) to 5, 5 to 6. 
-     If we want a visual snake where 3 drops to 6 (right), we need to reorder them on desktop. */
-     
-  .node:nth-child(4) {
-    grid-column: 3;
-    grid-row: 2;
-  }
-  .node:nth-child(5) {
-    grid-column: 2;
-    grid-row: 2;
-  }
-  .node:nth-child(6) {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  /* Connect 4(right) to 5(middle) */
-  .node:nth-child(4)::before {
-    top: 50%;
-    left: calc(var(--space-xl) * -1);
-    width: var(--space-xl);
-    height: var(--border-width);
-    transform: translateY(-50%);
-  }
-
-  /* Connect 5(middle) to 6(left) */
-  .node:nth-child(5)::before {
-    top: 50%;
-    left: calc(var(--space-xl) * -1);
-    width: var(--space-xl);
-    height: var(--border-width);
-    transform: translateY(-50%);
+  .blueprintHeader {
+    flex-direction: column;
+    align-items: flex-start;
   }
 }

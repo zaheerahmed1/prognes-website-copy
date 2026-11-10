@@ -1,8 +1,10 @@
 import { growthPage } from "@/content/growth";
+import { routes } from "@/content/nav";
 import { Section } from "@/components/primitives/Section/Section";
 import { Container } from "@/components/primitives/Grid/Grid";
 import { Eyebrow } from "@/components/primitives/Eyebrow/Eyebrow";
 import { Heading } from "@/components/primitives/Heading/Heading";
+import { Button } from "@/components/primitives/Button/Button";
 import { GrowthSelector } from "./GrowthSelector";
 import { GrowthReveal } from "./GrowthReveal";
 import styles from "./GrowthSection.module.css";
@@ -36,6 +38,17 @@ export function GrowthSection() {
 
           <div className={styles.layout}>
             <GrowthSelector />
+          </div>
+
+          <div className={styles.footerAction}>
+            <Button
+              variant="secondary"
+              href={routes.workCreative}
+              className={styles.exploreLink}
+            >
+              Explore AI Growth &amp; Creative
+              <span className={styles.actionArrow} aria-hidden="true">→</span>
+            </Button>
           </div>
         </GrowthReveal>
       </Container>

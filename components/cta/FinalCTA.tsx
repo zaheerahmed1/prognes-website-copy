@@ -9,7 +9,9 @@ import styles from "./FinalCTA.module.css";
 
 export function FinalCTA() {
   const primaryHref = cta.primary.href;
-  const secondaryCta = cta.secondary.find((s) => s.label === "Talk to an engineer");
+  const secondaryCta =
+    cta.secondary.find((s) => s.label === "Book a strategy call") ||
+    cta.secondary.find((s) => s.label === "Talk to an engineer");
 
   return (
     <Section id="cta" className={styles.section} spacing="large">
@@ -25,6 +27,10 @@ export function FinalCTA() {
               Build your advantage.
             </Heading>
 
+            {cta.subtext && (
+              <p className={styles.subtext}>{cta.subtext}</p>
+            )}
+
             <div className={styles.actions}>
               {primaryHref ? (
                 <Link href={primaryHref} className={styles.primaryBtn}>
@@ -37,11 +43,21 @@ export function FinalCTA() {
               )}
 
               {secondaryCta && secondaryCta.href && (
-                <Link href={secondaryCta.href} className={styles.secondaryBtn}>
+                <a
+                  href={secondaryCta.href}
+                  className={styles.secondaryBtn}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   {secondaryCta.label}
-                </Link>
+                  <span className={styles.externalArrow} aria-hidden="true">↗</span>
+                </a>
               )}
             </div>
+
+            {cta.reassurance && (
+              <p className={styles.reassurance}>{cta.reassurance}</p>
+            )}
           </div>
         </SectionReveal>
       </Container>

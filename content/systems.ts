@@ -1,7 +1,7 @@
 import { routes } from "@/content/nav";
 
 export const systemsPage = {
-  path: routes.systems,
+  path: routes.workAutomation,
   title: "AI Systems",
   modules: [
     {

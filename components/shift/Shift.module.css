@@ -1,8 +1,24 @@
 .shift {
   position: relative;
   background-color: var(--color-bg);
-  border-top: var(--border-width) solid var(--color-border);
+  border-top: var(--border-width) solid rgba(255, 255, 255, 0.06);
   overflow: hidden;
+}
+
+/* Diagonal gradient sweep — atmospheric transition */
+.shift::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(0, 12, 0, 0.3) 0%,
+    transparent 40%,
+    rgba(214, 255, 63, 0.03) 70%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* Background architecture lines for Shift section */
@@ -10,7 +26,6 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.1;
   z-index: 0;
 }
 
@@ -19,7 +34,7 @@
   top: 0;
   bottom: 0;
   width: 1px;
-  background: var(--color-text-primary);
+  background: rgba(214, 255, 63, 0.06);
 }
 
 .archLineH {
@@ -27,7 +42,7 @@
   left: 0;
   right: 0;
   height: 1px;
-  background: var(--color-text-primary);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .header {
@@ -37,6 +52,8 @@
   margin-bottom: var(--space-xl);
   align-items: center;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
 .eyebrow {
@@ -88,9 +105,11 @@
 .transformFrom {
   font-family: var(--font-body);
   font-size: var(--text-small-size);
-  color: var(--color-text-secondary);
+  color: var(--color-text-muted);
   text-transform: uppercase;
   letter-spacing: var(--text-label-tracking);
+  text-decoration: line-through;
+  text-decoration-color: rgba(163, 163, 163, 0.25);
 }
 
 .transformArrow {
@@ -100,8 +119,8 @@
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  border: var(--border-width) solid var(--color-border-strong);
-  color: var(--color-text-secondary);
+  border: var(--border-width) solid rgba(214, 255, 63, 0.3);
+  color: var(--color-accent);
   font-size: 14px;
 }
 
@@ -148,12 +167,12 @@
     padding: var(--space-xl) 8vw;
     background-color: transparent;
     border: none;
-    border-bottom: var(--border-width) solid var(--color-border);
+    border-bottom: var(--border-width) solid rgba(255, 255, 255, 0.06);
     border-radius: 0;
   }
 
   .transformItem:first-child {
-    border-top: var(--border-width) solid var(--color-border);
+    border-top: var(--border-width) solid rgba(255, 255, 255, 0.06);
   }
   
   .transformTo {

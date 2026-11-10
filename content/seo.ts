@@ -1,13 +1,12 @@
 import { site } from "@/content/nav";
 
 /**
- * SEO strings use approved positioning language only.
- * A legal organization name is not specified — siteName matches the core brand idea.
+ * SEO strings use PROGNES brand name + approved positioning language.
  */
 export const seo = {
   siteName: site.wordmark,
-  defaultTitle: site.wordmark,
+  defaultTitle: `${site.wordmark} — ${site.tagline}`,
   titleTemplate: `%s · ${site.wordmark}`,
   description:
-    "We engineer systems that create operational leverage. AI Growth and AI Systems as one operating loop.",
+    "PROGNES combines AI-powered creative and growth systems with intelligent automation to help businesses capture more opportunities and eliminate operational friction.",
 } as const;

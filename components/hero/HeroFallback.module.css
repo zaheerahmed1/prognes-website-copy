@@ -5,14 +5,51 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  background-color: var(--color-bg);
+  background-color: transparent;
+}
+
+/* ─── Deep atmospheric radial — primary cinematic light source ─── */
+.atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(
+      ellipse 80% 80% at 55% 45%,
+      rgba(214, 255, 63, 0.09) 0%,
+      rgba(0, 20, 0, 0.25) 40%,
+      transparent 70%
+    ),
+    radial-gradient(
+      ellipse 50% 50% at 65% 35%,
+      rgba(214, 255, 63, 0.05) 0%,
+      transparent 55%
+    );
+  pointer-events: none;
+}
+
+/* ─── Ghost wordmark — compositional depth layer ─── */
+.ghostWordmark {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: clamp(6rem, 18vw, 22rem);
+  font-weight: 700;
+  letter-spacing: -0.07em;
+  color: var(--color-text-primary);
+  opacity: 0.025;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  line-height: 1;
+  top: 50%;
+  left: 50%;
+  transform: translate(-42%, -50%);
 }
 
 /* ─── Architectural grid lines ─── */
 .grid {
   position: absolute;
   inset: 0;
-  opacity: 0.04;
+  opacity: 0.035;
 }
 
 .gridLine {
@@ -32,56 +69,85 @@
   right: 0;
 }
 
-/* ─── Central geometric form ─── */
+/* ─── Central geometric form — Intelligence → Infrastructure ─── */
 .form {
   position: relative;
-  width: clamp(240px, 40vw, 480px);
-  height: clamp(240px, 40vw, 480px);
+  width: clamp(280px, 44vw, 520px);
+  height: clamp(280px, 44vw, 520px);
 }
 
-/* Outer ring */
+/* Outer ring — slow breathing pulse */
 .ring {
   position: absolute;
   inset: 0;
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(214, 255, 63, 0.18);
   border-radius: 50%;
-  opacity: 0.5;
-  animation: ringPulse 6s var(--ease-standard) infinite;
+  animation: ringBreath 8s var(--ease-standard) infinite;
+}
+
+/* Second ring — slightly inset, slower */
+.ringMid {
+  position: absolute;
+  inset: 12%;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  animation: ringBreath 12s var(--ease-standard) infinite reverse;
 }
 
 .ringInner {
   position: absolute;
-  inset: 15%;
-  border: 1px solid var(--color-border);
+  inset: 24%;
+  border: 1px solid rgba(214, 255, 63, 0.12);
   border-radius: 50%;
-  opacity: 0.3;
+  opacity: 0.6;
+}
+
+/* Accent arc — partial ring in accent colour */
+.accentArc {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.accentArcSvg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Rotating accent arc element */
+.accentArcTrack {
+  animation: arcRotate 20s linear infinite;
+  transform-origin: 50% 50%;
 }
 
 /* Central diamond / square rotated */
 .diamond {
   position: absolute;
-  inset: 25%;
-  border: 1px solid var(--color-border-strong);
+  inset: 32%;
+  border: 1px solid rgba(255, 255, 255, 0.14);
   transform: rotate(45deg);
-  opacity: 0.6;
 }
 
 .diamondInner {
   position: absolute;
-  inset: 20%;
+  inset: 18%;
   border: 1px solid var(--color-accent);
   transform: rotate(0deg);
-  opacity: 0.15;
+  opacity: 0.25;
 }
 
 /* Node dots */
 .node {
   position: absolute;
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: var(--color-accent);
-  opacity: 0.4;
+  box-shadow: 0 0 10px rgba(214, 255, 63, 0.5), 0 0 20px rgba(214, 255, 63, 0.2);
 }
 
 .nodeTop    { top: 0; left: 50%; transform: translateX(-50%); }
@@ -89,52 +155,44 @@
 .nodeBottom { bottom: 0; left: 50%; transform: translateX(-50%); }
 .nodeLeft   { top: 50%; left: 0; transform: translateY(-50%); }
 
-/* Center accent */
+/* Center pulse */
 .center {
   position: absolute;
-  inset: 42%;
+  inset: 44%;
   background: var(--color-accent);
-  opacity: 0.08;
+  opacity: 0.15;
   border-radius: 2px;
   transform: rotate(45deg);
+  animation: centerPulse 4s ease-in-out infinite;
 }
 
-/* Subtle gradient overlay */
+/* Radial edge fade — blends form into background */
 .gradient {
   position: absolute;
   inset: 0;
   background: radial-gradient(
     ellipse at center,
-    transparent 40%,
-    var(--color-bg) 80%
+    transparent 35%,
+    var(--color-bg) 78%
   );
-}
-
-@keyframes ringPulse {
-  0%, 100% {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.3;
-    transform: scale(1.02);
-  }
+  pointer-events: none;
 }
 
 /* ─── Concept badge ─── */
 .badge {
   position: absolute;
-  bottom: 20%;
+  bottom: 18%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
   align-items: center;
   gap: 8px;
   padding: 6px 14px;
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(214, 255, 63, 0.2);
   border-radius: var(--radius-pill);
-  background: rgba(10, 10, 10, 0.7);
+  background: rgba(10, 10, 10, 0.75);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   white-space: nowrap;
 }
 
@@ -144,7 +202,7 @@
   font-weight: var(--font-weight-label);
   letter-spacing: var(--text-label-tracking);
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: rgba(214, 255, 63, 0.7);
   line-height: var(--text-label-leading);
 }
 
@@ -154,10 +212,32 @@
   border-radius: 50%;
   background: var(--color-accent);
   flex-shrink: 0;
+  box-shadow: 0 0 6px var(--color-accent);
+  animation: centerPulse 3s ease-in-out infinite;
+}
+
+/* ─── Keyframes ─── */
+@keyframes ringBreath {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(1.025); }
+}
+
+@keyframes centerPulse {
+  0%, 100% { opacity: 0.15; }
+  50% { opacity: 0.35; }
+}
+
+@keyframes arcRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ring {
+  .ring,
+  .ringMid,
+  .center,
+  .badgeDot,
+  .accentArcTrack {
     animation: none;
   }
 }

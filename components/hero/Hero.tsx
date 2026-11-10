@@ -55,12 +55,21 @@ export function Hero() {
               </span>
             </Button>
 
-            <Button
-              variant="secondary"
-              href={hero.secondaryCta.href}
-            >
-              {hero.secondaryCta.label}
-            </Button>
+            <div className={styles.pathways}>
+              {hero.servicePathways.map((path) => (
+                <Button
+                  key={path.href}
+                  variant="secondary"
+                  href={path.href}
+                  className={styles.pathwayBtn}
+                >
+                  {path.label}{" "}
+                  <span className={styles.arrow} aria-hidden="true">
+                    {path.arrow}
+                  </span>
+                </Button>
+              ))}
+            </div>
           </div>
 
           {/* Metadata pillars — visible on tablet+ */}
