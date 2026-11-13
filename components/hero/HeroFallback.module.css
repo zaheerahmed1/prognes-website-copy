@@ -178,44 +178,6 @@
   pointer-events: none;
 }
 
-/* ─── Concept badge ─── */
-.badge {
-  position: absolute;
-  bottom: 18%;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  border: 1px solid rgba(214, 255, 63, 0.2);
-  border-radius: var(--radius-pill);
-  background: rgba(10, 10, 10, 0.75);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  white-space: nowrap;
-}
-
-.badgeLabel {
-  font-family: var(--font-body);
-  font-size: var(--text-label-size);
-  font-weight: var(--font-weight-label);
-  letter-spacing: var(--text-label-tracking);
-  text-transform: uppercase;
-  color: rgba(214, 255, 63, 0.7);
-  line-height: var(--text-label-leading);
-}
-
-.badgeDot {
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background: var(--color-accent);
-  flex-shrink: 0;
-  box-shadow: 0 0 6px var(--color-accent);
-  animation: centerPulse 3s ease-in-out infinite;
-}
-
 /* ─── Keyframes ─── */
 @keyframes ringBreath {
   0%, 100% { opacity: 0.6; transform: scale(1); }
@@ -236,7 +198,6 @@
   .ring,
   .ringMid,
   .center,
-  .badgeDot,
   .accentArcTrack {
     animation: none;
   }

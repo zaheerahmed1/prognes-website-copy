@@ -1,4 +1,3 @@
-import { home } from "@/content/home";
 import styles from "./HeroFallback.module.css";
 
 /**
@@ -90,11 +89,6 @@ export function HeroFallback() {
       {/* Radial edge fade — blends into background */}
       <div className={styles.gradient} aria-hidden="true" />
 
-      {/* Concept badge */}
-      <div className={styles.badge}>
-        <span className={styles.badgeDot} />
-        <span className={styles.badgeLabel}>{home.hero.conceptBadge}</span>
-      </div>
     </div>
   );
 }
