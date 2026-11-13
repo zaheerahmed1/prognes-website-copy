@@ -29,7 +29,6 @@ export function SystemsDemoStage({ videoSrc, poster }: SystemsDemoStageProps) {
             poster={poster}
             aspectRatio="16/9"
             title="System Walkthrough Demo"
-            category="AI Systems"
           />
         ) : (
           <div className={styles.presentationScreen}>

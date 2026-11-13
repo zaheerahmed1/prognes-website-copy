@@ -40,45 +40,6 @@
   display: block;
 }
 
-.topBadges {
-  position: absolute;
-  top: var(--space-sm);
-  left: var(--space-sm);
-  z-index: 3;
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-xs);
-  pointer-events: none;
-}
-
-.badge {
-  font-family: var(--font-body);
-  font-size: 10px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--lime);
-  background-color: rgba(10, 10, 10, 0.85);
-  border: 1px solid var(--lime-border);
-  padding: 4px 10px;
-  border-radius: var(--radius-pill);
-  backdrop-filter: blur(8px);
-}
-
-.categoryBadge {
-  font-family: var(--font-body);
-  font-size: 10px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--text-2);
-  background-color: rgba(17, 17, 17, 0.85);
-  border: 1px solid var(--border);
-  padding: 4px 10px;
-  border-radius: var(--radius-pill);
-  backdrop-filter: blur(8px);
-}
-
 .bottomGradient {
   position: absolute;
   bottom: 0;

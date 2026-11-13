@@ -146,7 +146,6 @@ export const home = {
       "Explore tangible creative output alongside our intelligent automation architecture.",
     creative: {
       title: "Growth & Creative Showcase",
-      badge: "CONCEPT / SPEC WORK",
       description:
         "Select commercial films, CGI product reveals, and AI creator ads produced for testing visual hooks and product framing.",
       items: [
@@ -220,7 +219,6 @@ export const home = {
         subtitle: "CGI, AI UGC & Commercial Campaigns",
         description:
           "Explore our creative campaigns, AI UGC, CGI advertisements and product visuals.",
-        badge: "CONCEPT / SPEC WORK",
         ctaLabel: "EXPLORE CREATIVE WORK",
         href: routes.workCreative,
         previewType: "creative",

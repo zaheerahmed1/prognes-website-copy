@@ -8,9 +8,7 @@ interface VideoPlayerProps {
   poster?: string;
   aspectRatio?: "16/9" | "9/16" | "4/5" | "1/1";
   title?: string;
-  badge?: string;
   className?: string;
-  category?: string;
 }
 
 export function VideoPlayer({
@@ -18,9 +16,7 @@ export function VideoPlayer({
   poster,
   aspectRatio = "16/9",
   title,
-  badge,
   className,
-  category,
 }: VideoPlayerProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(true);
@@ -106,12 +102,6 @@ export function VideoPlayer({
         onPause={() => setIsPlaying(false)}
         aria-label={title || "Continuous video playback"}
       />
-
-      {/* Top Badges */}
-      <div className={styles.topBadges}>
-        {badge && <span className={styles.badge}>{badge}</span>}
-        {category && <span className={styles.categoryBadge}>{category}</span>}
-      </div>
 
       {/* Ambient gradient overlay */}
       <div className={styles.bottomGradient} aria-hidden="true" />

@@ -41,9 +41,6 @@ export function DemosSection() {
             {/* ── Area 1: Growth & Creative Video Showcase ── */}
             <div className={styles.creativeShowcase}>
               <header className={styles.showcaseHeader}>
-                <div className={styles.badgeRow}>
-                  <span className={styles.conceptBadge}>{creative.badge}</span>
-                </div>
                 <h3 className={styles.showcaseTitle}>{creative.title}</h3>
                 <p className={styles.showcaseDesc}>{creative.description}</p>
 
@@ -75,8 +72,6 @@ export function DemosSection() {
                     activeCreativeItem.aspectRatio as "16/9" | "9/16" | "4/5" | "1/1"
                   }
                   title={activeCreativeItem.title}
-                  badge={creative.badge}
-                  category={activeCreativeItem.category}
                 />
               </div>
             </div>

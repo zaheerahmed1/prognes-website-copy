@@ -16,7 +16,6 @@ export interface CreativeProject {
   poster?: string;
   aspectRatio: "16/9" | "9/16" | "4/5" | "1/1";
   description: string;
-  badge: "CONCEPT / SPEC WORK";
   deliverables: string[];
 }
 
@@ -41,7 +40,6 @@ export const creativeProjects: CreativeProject[] = [
     poster: "/images/creative/poster-cgi.jpg",
     aspectRatio: "16/9",
     description: "3D bottle animation featuring liquid particle simulation, dynamic lighting passes, and dramatic product reveal.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["16:9 3D Animation", "Lighting & Fluid Passes"],
   },
   {
@@ -53,7 +51,6 @@ export const creativeProjects: CreativeProject[] = [
     poster: "/images/creative/poster-cgi.jpg",
     aspectRatio: "16/9",
     description: "Zero-gravity product animation showcasing rotational angles and high-fidelity texture rendering.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["16:9 Motion Render", "Texture Detail Passes"],
   },
   {
@@ -65,7 +62,6 @@ export const creativeProjects: CreativeProject[] = [
     poster: "/images/creative/poster-cgi.jpg",
     aspectRatio: "16/9",
     description: "Particle simulation and abstract 3D environment composition for product feature highlights.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["16:9 Particle Render", "Environment Simulation"],
   },
 
@@ -79,7 +75,6 @@ export const creativeProjects: CreativeProject[] = [
     poster: "/images/creative/poster-ugc.jpg",
     aspectRatio: "9/16",
     description: "Vertical social ad format featuring natural presenter delivery and live product interaction.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["9:16 Vertical Video", "Presenter Demonstration"],
   },
   {
@@ -91,7 +86,6 @@ export const creativeProjects: CreativeProject[] = [
     poster: "/images/creative/poster-ugc.jpg",
     aspectRatio: "9/16",
     description: "Testimonial-style creator delivery framed for mobile social placements and direct engagement.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["9:16 Testimonial Cut", "Social Feed Framing"],
   },
   {
@@ -103,7 +97,6 @@ export const creativeProjects: CreativeProject[] = [
     poster: "/images/creative/poster-ugc.jpg",
     aspectRatio: "9/16",
     description: "Daily routine setting showcasing contextual product placement and creator narrative pacing.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["9:16 Lifestyle Format", "Contextual Product Demo"],
   },
   {
@@ -115,7 +108,6 @@ export const creativeProjects: CreativeProject[] = [
     poster: "/images/creative/poster-ugc.jpg",
     aspectRatio: "9/16",
     description: "High-tempo creator demonstration engineered for short-form feed testing and retention.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["9:16 Fast-Paced Cut", "Dynamic Subtitles"],
   },
   {
@@ -127,7 +119,6 @@ export const creativeProjects: CreativeProject[] = [
     poster: "/images/creative/poster-ugc.jpg",
     aspectRatio: "9/16",
     description: "Mobile-first creator video formatted for paid social testing and audience engagement.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["9:16 Ad Creative", "Vertical Cut"],
   },
 
@@ -141,7 +132,6 @@ export const creativeProjects: CreativeProject[] = [
     poster: "/images/creative/poster-commercial.jpg",
     aspectRatio: "16/9",
     description: "High-contrast cinematic commercial film with dramatic directional lighting and luxury art direction.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["16:9 Brand Film", "Cinematic Grade"],
   },
   {
@@ -153,7 +143,6 @@ export const creativeProjects: CreativeProject[] = [
     poster: "/images/creative/poster-commercial.jpg",
     aspectRatio: "16/9",
     description: "Narrative brand visual exploring moody atmospheric lighting and deliberate visual pacing.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["16:9 Commercial Cut", "Lighting Composition"],
   },
   {
@@ -165,7 +154,6 @@ export const creativeProjects: CreativeProject[] = [
     poster: "/images/creative/poster-commercial.jpg",
     aspectRatio: "16/9",
     description: "Rhythmically paced advertising edit combining close-up product geometry with motion transitions.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["16:9 Edit", "Motion Transitions"],
   },
   {
@@ -177,7 +165,6 @@ export const creativeProjects: CreativeProject[] = [
     poster: "/images/creative/poster-commercial.jpg",
     aspectRatio: "16/9",
     description: "Short cinematic vignette focusing on textural highlights, shallow depth of field, and framing.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["16:9 Vignette", "Macro Photography Passes"],
   },
 
@@ -190,7 +177,6 @@ export const creativeProjects: CreativeProject[] = [
     src: "/images/creative/product-studio-01.png",
     aspectRatio: "4/5",
     description: "Controlled multi-point studio lighting composition highlighting reflective surfaces and label typography.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["High-Res Studio Still", "Key & Rim Light Passes"],
   },
   {
@@ -201,7 +187,6 @@ export const creativeProjects: CreativeProject[] = [
     src: "/images/creative/product-studio-02.png",
     aspectRatio: "4/5",
     description: "Clean geometric surface staging designed for digital storefront and catalog hero presentation.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["E-Commerce Hero Still", "Monochrome Staging"],
   },
   {
@@ -212,7 +197,6 @@ export const creativeProjects: CreativeProject[] = [
     src: "/images/creative/product-studio-03.png",
     aspectRatio: "4/5",
     description: "Tactile surface arrangement pairing warm stone textures with sharp specular highlights.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["Textured Product Still", "Depth Composition"],
   },
 
@@ -225,7 +209,6 @@ export const creativeProjects: CreativeProject[] = [
     src: "/images/creative/meta-ad-01.png",
     aspectRatio: "4/5",
     description: "Static visual layout combining high-contrast typography, offer framing, and product imagery for social feeds.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["4:5 Feed Static", "Headline Hierarchy"],
   },
   {
@@ -236,7 +219,6 @@ export const creativeProjects: CreativeProject[] = [
     src: "/images/creative/meta-ad-02.png",
     aspectRatio: "4/5",
     description: "Modular comparison structure designed for clarity and scannability on mobile advertising feeds.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["4:5 Comparison Layout", "Visual Contrast Split"],
   },
   {
@@ -247,7 +229,6 @@ export const creativeProjects: CreativeProject[] = [
     src: "/images/creative/meta-ad-03.png",
     aspectRatio: "4/5",
     description: "Editorial layout pairing product silhouettes with structured secondary benefit annotations.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["4:5 Feature Matrix", "Annotation Graphic"],
   },
   {
@@ -258,7 +239,6 @@ export const creativeProjects: CreativeProject[] = [
     src: "/images/creative/meta-ad-04.png",
     aspectRatio: "4/5",
     description: "High-legibility advertising static utilizing bold typography and single focal-point product art.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["4:5 Social Static", "Single-Focus Composition"],
   },
 
@@ -271,7 +251,6 @@ export const creativeProjects: CreativeProject[] = [
     src: "/images/creative/influencer-01.png",
     aspectRatio: "4/5",
     description: "Consistent virtual character identity development featuring high-end editorial lighting and styling.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["Character Identity Sheet", "High-Fashion Editorial"],
   },
   {
@@ -282,7 +261,6 @@ export const creativeProjects: CreativeProject[] = [
     src: "/images/creative/influencer-02.png",
     aspectRatio: "4/5",
     description: "Fashion editorial scene testing directional rim light and fabric texture consistency.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["Lighting Variation", "Character Consistency"],
   },
   {
@@ -293,7 +271,6 @@ export const creativeProjects: CreativeProject[] = [
     src: "/images/creative/influencer-03.png",
     aspectRatio: "4/5",
     description: "Natural environmental setting demonstrating character coherence across varied lighting conditions.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["Contextual Environment", "Natural Light Pass"],
   },
   {
@@ -304,7 +281,6 @@ export const creativeProjects: CreativeProject[] = [
     src: "/images/creative/influencer-04.png",
     aspectRatio: "4/5",
     description: "Macro beauty portrait exploring skin texture fidelity and cinematic color grading.",
-    badge: "CONCEPT / SPEC WORK",
     deliverables: ["Beauty Portrait", "Macro Detail Pass"],
   },
 ];

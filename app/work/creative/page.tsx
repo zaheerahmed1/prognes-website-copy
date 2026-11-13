@@ -87,8 +87,6 @@ export default function CreativeWorkPage() {
                       poster={project.poster}
                       aspectRatio={project.aspectRatio}
                       title={project.title}
-                      badge={project.badge}
-                      category={project.category}
                     />
                   ) : (
                     <div
@@ -104,8 +102,6 @@ export default function CreativeWorkPage() {
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                         className={styles.stillImg}
                       />
-                      <span className={styles.badgeOverlay}>{project.badge}</span>
-                      <span className={styles.categoryOverlay}>{project.category}</span>
                     </div>
                   )}
                 </div>
@@ -166,7 +162,7 @@ export default function CreativeWorkPage() {
             <div className={styles.modalMeta}>
               <div className={styles.modalHeader}>
                 <span className={styles.cardCategory}>
-                  {activeModalProject.category} · {activeModalProject.badge}
+                  {activeModalProject.category}
                 </span>
                 <h3 className={styles.modalTitle}>{activeModalProject.title}</h3>
               </div>

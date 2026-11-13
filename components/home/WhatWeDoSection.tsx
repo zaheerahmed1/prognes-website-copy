@@ -72,7 +72,6 @@ export function WhatWeDoSection() {
                     sizes="(max-width: 768px) 100vw, 45vw"
                     className={styles.previewImage}
                   />
-                  <span className={styles.conceptBadge}>CONCEPT / SPEC WORK</span>
                 </div>
               </div>
 
